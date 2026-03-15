@@ -1,0 +1,72 @@
+---
+- name: Автоматическое развертывание проекта Webland
+  hosts: webservers
+  become: yes
+  
+  # Блок переменных - удобно менять настройки в одном месте
+  vars:
+    github_repo: "https://github.com/IsWaFF/webland.git"
+    project_path: "/opt/webland"
+    image_name: "webland-nginx"
+    container_name: "webland-app"
+
+  tasks:
+    # --- ЭТАП 1: Подготовка системы и установка Docker ---
+    - name: Установить Git и необходимые зависимости
+      apt:
+        name:
+          - git
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - python3-docker  # Важно: нужно для работы модулей Ansible с Docker
+        state: present
+        update_cache: yes
+
+    - name: Добавить GPG ключ репозитория Docker
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Добавить официальный репозиторий Docker
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        state: present
+
+    - name: Установить Docker Engine
+      apt:
+        name: docker-ce
+        state: present
+
+    - name: Убедиться, что служба Docker запущена и добавлена в автозагрузку
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    # --- ЭТАП 2: Работа с кодом ---
+    - name: Склонировать репозиторий с GitHub
+      git:
+        repo: "{{ github_repo }}"
+        dest: "{{ project_path }}"
+        version: main
+        force: yes # Автоматически подтянет изменения, если ты запушишь новый код
+
+    # --- ЭТАП 3: Сборка и запуск контейнера ---
+    - name: Собрать Docker-образ из Dockerfile
+      community.docker.docker_image:
+        build:
+          path: "{{ project_path }}"
+        name: "{{ image_name }}"
+        source: build
+        state: present
+
+    - name: Запустить контейнер с Nginx
+      community.docker.docker_container:
+        name: "{{ container_name }}"
+        image: "{{ image_name }}"
+        state: started
+        restart_policy: always
+        recreate: yes # Пересоздаст контейнер, если образ обновился
+        ports:
+          - "80:80"

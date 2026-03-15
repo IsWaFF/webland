@@ -1,13 +1,18 @@
-# For my website
+_For my website_
 
-__usage__
+# Usage
 
-_u allready have instaled docker_
-
-``sudo pacman -S docker``
+### Docker
 
 ``docker build . -t portfol``
 
 ``docker run -p 8080:80 portfol``
 
 it will be on __http://localhost:8080/__
+
+### Ansible
+__To use ansible add yours hosts.ini !!!__
+
+``ansible-galaxy collection install community.docker``
+
+``ansible-playbook -i hosts.ini deploy.yml``
