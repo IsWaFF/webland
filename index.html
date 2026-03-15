@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио DevOps-инженера</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Основные стили для всего сайта */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212; /* Очень темный фон */
+            color: #e0e0e0; /* Светло-серый текст для комфортного чтения */
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Контейнер для выравнивания контента */
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Шапка сайта (Навигация) */
+        header {
+            background-color: #1e1e1e; /* Чуть более светлый темный для контраста */
+            padding: 20px 0;
+            border-bottom: 2px solid #333;
+            position: sticky; /* Липкая шапка */
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: #b0b0b0;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #fff;
+        }
+
+        /* Секция "О себе" (Главная) */
+        .hero {
+            padding: 30px 0;
+            text-align: center;
+            background: radial-gradient(circle, rgba(30,30,30,1) 0%, rgba(18,18,18,1) 100%);
+        }
+
+        .hero img {
+            width: 225px;
+            height: 225px;
+            border-radius: 50%; /* Круглая аватарка */
+            border: 5px solid #333;
+            margin-bottom: -5px;
+            object-fit: cover;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #b0b0b0;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        /* Социальные ссылки */
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .social-links a:hover {
+            background-color: #555;
+        }
+
+        .social-links i {
+            margin-right: 8px;
+        }
+
+        /* Секции контента (Навыки, Опыт, Будущее) */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #fff;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #555;
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Сетка для навыков (Тех. стек) */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .skill-category h4 {
+            margin-top: 0;
+            color: #fff;
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .skill-category ul li {
+            margin-bottom: 8px;
+            color: #b0b0b0;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-category ul li::before {
+            content: '✓'; /* Галочка перед каждым навыком */
+            color: #555;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* Стили для будущих вкладок (заглушки) */
+        .future-tabs {
+            text-align: center;
+            font-style: italic;
+            color: #777;
+            background-color: #1e1e1e;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+
+        /* Футер (Подвал сайта) */
+        footer {
+            background-color: #1e1e1e;
+            padding: 30px 0;
+            text-align: center;
+            border-top: 2px solid #333;
+            color: #777;
+        }
+
+        /* Адаптивность для мобильных устройств */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+            header .container {
+                flex-direction: column;
+            }
+            header nav ul {
+                margin-top: 15px;
+            }
+            header nav ul li {
+                margin: 0 10px;
+            }
+            .hero h2 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Is_WaFF
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">О себе</a></li>
+                    <li><a href="#stack">Стек</a></li>
+                    <li><a href="#teams">Команды</a></li> <li><a href="#projects">Проекты</a></li> </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about" class="hero">
+        <div class="container">
+            <img src="https://avatars.githubusercontent.com/u/93275675?s=400&u=ca19a235c0cf99687bd1c05820633b506ad36f94&v=4" alt="Твой Аватар">
+            <h2>WaFF</h2>
+            <p>Специализируюсь на автоматизации процессов разработки, развертывании инфраструктуры как кода (IaC) и обеспечении высокой доступности систем. Помогаю командам поставлять софт быстрее и надежнее.</p>
+            
+            <div class="social-links">
+                <a href="https://github.com/IsWaFF" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://t.me/asseryx" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="stack" class="section">
+        <div class="container">
+            <h3 class="section-title">Мой Технический Стек</h3>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Cloud & IaC</h4>
+                    <ul>
+                        <li>AWS / Azure / GCP</li>
+                        <li>Terraform</li>
+                        <li>Ansible</li>
+                        <li>CloudFormation</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Containers</h4>
+                    <ul>
+                        <li>Docker</li>
+                        <li>Kubernetes (K8s)</li>
+                        <li>Helm</li>
+                        <li>Docker Compose</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4>CI/CD</h4>
+                    <ul>
+                        <li>GitLab CI</li>
+                        <li>Jenkins</li>
+                        <li>GitHub Actions</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Observability</h4>
+                    <ul>
+                        <li>Prometheus</li>
+                        <li>Grafana</li>
+                        <li>ELK Stack (Elasticsearch)</li>
+                        <li>Datadog</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Основы</h4>
+                    <ul>
+                        <li>Linux (Ubuntu, CentOS)</li>
+                        <li>Bash Scripting</li>
+                        <li>Python</li>
+                        <li>Git (GitFlow)</li>
+                        <li>Сетевые протоколы (TCP/IP, DNS)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="teams" class="section">
+        <div class="container">
+            <h3 class="section-title">Мои Команды</h3>
+            <div class="future-tabs">
+                <p>Здесь в будущем я опишу опыт работы в различных командах, методологии (Agile/Scrum), которые мы использовали, и мою роль в организации взаимодействия между Dev и Ops.</p>
+                <p>(Секция в разработке...)</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h3 class="section-title">Проекты</h3>
+            <div class="future-tabs">
+                <p>В этой секции я размещу кейсы: описание сложных задач по автоматизации, миграции в облака или настройке CI/CD пайплайнов, которые я успешно решил.</p>
+                <p>(Секция в разработке...)</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 WaFF. Все права защищены.</p>
+            <p>By WaFF .</p>
+        </div>
+    </footer>
+
+</body>
+</html>
