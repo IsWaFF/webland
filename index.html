@@ -56,13 +56,14 @@
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid var(--panel-border);
+            transform: translateY(0); /* Базовое состояние для transition */
             transition: transform 0.3s ease-in-out;
             /* Ускорено до 0.4s */
             animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .header-hidden {
-            transform: translateY(-100%) !important;
+            transform: translateY(-100%); /* Убран !important для плавной работы transition */
         }
 
         #dynamic-greeting {
@@ -571,15 +572,20 @@
             document.getElementById('dynamic-greeting').innerText = randomGreeting;
         });
 
+        const header = document.getElementById('main-header');
+
+        // Снимаем блокировку свойства transform после завершения начальной анимации
+        header.addEventListener('animationend', () => {
+            header.style.animation = 'none';
+        });
+
         // --- Логика скрытия шапки при скролле ---
         let lastScrollTop = 0;
-        const header = document.getElementById('main-header');
 
         window.addEventListener('scroll', () => {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
             if (scrollTop > lastScrollTop && scrollTop > 80) {
-                // Добавил !important к стилям в CSS, чтобы перебить изначальную анимацию при скролле
                 header.classList.add('header-hidden');
             } else {
                 header.classList.remove('header-hidden');
