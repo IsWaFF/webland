@@ -1,0 +1,34 @@
+name: Fast Docker Deploy
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          # Собираем образ с тегом 'latest'
+          docker build -t webland-nginx .
+
+      - name: Deploy Container
+        run: |
+          # Останавливаем и удаляем старый контейнер, если он есть
+          docker stop webland-app || true
+          docker rm webland-app || true
+          
+          # Запускаем новый
+          docker run -d \
+            --name webland-app \
+            --restart always \
+            -p 80:80 \
+            webland-nginx
+            
+      - name: Cleanup
+        run: |
+          # Удаляем старые ненужные образы, чтобы не забивать диск (на Micro это важно)
+          docker image prune -f

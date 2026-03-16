@@ -1,0 +1,58 @@
+---
+- name: Подготовка сервера под Self-Hosted Runner и Docker
+  hosts: webservers
+  become: yes
+  
+  vars:
+    project_path: "/opt/webland"
+    image_name: "webland-nginx"
+    container_name: "webland-app"
+
+  tasks:
+    - name: Установить базу (Git, Docker, Python)
+      apt:
+        name:
+          - git
+          - curl
+          - docker-ce
+          - docker-compose-plugin
+          - python3-docker
+        state: present
+        update_cache: yes
+
+    - name: Создать пользователя для раннера
+      user:
+        name: github-runner
+        groups: docker  # <--- КРИТИЧЕСКИЙ МОМЕНТ: даем права на Docker
+        append: yes
+        shell: /bin/bash
+
+    - name: Создать рабочую директорию
+      file:
+        path: "{{ item }}"
+        state: directory
+        owner: github-runner
+        group: github-runner
+        mode: '0755'
+      loop:
+        - "/home/github-runner/actions-runner"
+        - "{{ project_path }}"
+
+    - name: Скачать и распаковать раннер
+      unarchive:
+        src: https://github.com/actions/runner/releases/download/v2.314.1/actions-runner-linux-x64-2.314.1.tar.gz
+        dest: /home/github-runner/actions-runner
+        remote_src: yes
+        owner: github-runner
+
+    - name: Установить зависимости раннера
+      command: "./bin/installdependencies.sh"
+      args:
+        chdir: /home/github-runner/actions-runner
+
+    - name: Настройка прав на папку проекта
+      file:
+        path: "{{ project_path }}"
+        owner: github-runner
+        group: docker
+        recurse: yes
