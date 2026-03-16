@@ -37,12 +37,19 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            border-bottom: 1px solid var(--panel-border);
-            position: sticky;
+            position: fixed;
+            width: 100%;
             top: 0;
+            left: 0;
             background: rgba(13, 13, 13, 0.8);
             backdrop-filter: blur(10px);
             z-index: 1000;
+            border-bottom: 1px solid var(--panel-border);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .header-hidden {
+            transform: translateY(-100%);
         }
 
         #dynamic-greeting {
@@ -70,10 +77,34 @@
             color: var(--accent-green);
         }
 
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-green);
+            color: var(--bg-color);
+            box-shadow: 0 0 10px rgba(168, 255, 0, 0.3);
+        }
+
         /* --- Сетка макета --- */
         .container {
             max-width: 1400px;
-            margin: 40px auto;
+            margin: 100px auto 40px; /* Увеличен отступ сверху из-за fixed шапки */
             padding: 0 20px;
             display: grid;
             grid-template-columns: 3fr 1fr; /* Основной контент и сайдбар (Кенты) */
@@ -321,20 +352,24 @@
         }
 
         @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
             header {
                 flex-direction: column;
                 gap: 15px;
+                padding: 15px 20px;
+            }
+            .header-actions {
+                margin-top: 5px;
+            }
+            .hero {
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
 
-    <header>
+    <header id="main-header">
         <div id="dynamic-greeting">Loading...</div>
         <nav>
             <ul>
@@ -529,14 +564,27 @@
                 "hello, im WaFF",
                 "yo, im WaFF",
                 "sup, im WaFF",
-                "sudo cat WaFF" // Немного DevOps юмора :)
+                "sudo cat WaFF"
             ];
             
-            // Выбираем случайный элемент из массива
             const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
-            
-            // Вставляем его в HTML
             document.getElementById('dynamic-greeting').innerText = randomGreeting;
+        });
+
+        // --- Логика скрытия шапки при скролле ---
+        let lastScrollTop = 0;
+        const header = document.getElementById('main-header');
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 80) {
+                header.classList.add('header-hidden');
+            } else {
+                header.classList.remove('header-hidden');
+            }
+            
+            lastScrollTop = scrollTop;
         });
     </script>
 </body>

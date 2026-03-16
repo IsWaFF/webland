@@ -15,4 +15,6 @@ __To use ansible add yours hosts.ini !!!__
 
 ``ansible-galaxy collection install community.docker``
 
-``ansible-playbook -i hosts.ini deploy.yml``
+``ansible-playbook -i hosts.ini setup.yml``
+
+# _All this on https://iswaff.com/_
