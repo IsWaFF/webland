@@ -57,8 +57,8 @@
             z-index: 1000;
             border-bottom: 1px solid var(--panel-border);
             transition: transform 0.3s ease-in-out;
-            /* Анимация хедера при загрузке */
-            animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            /* Ускорено до 0.4s */
+            animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .header-hidden {
@@ -114,9 +114,9 @@
             padding: 30px;
             backdrop-filter: blur(10px);
             transition: transform 0.3s ease, border-color 0.3s ease;
-            /* Базовые настройки для анимации появления */
+            /* Ускорено до 0.4s */
             opacity: 0; 
-            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .glass-panel:hover {
@@ -124,13 +124,13 @@
             transform: translateY(-2px);
         }
 
-        /* Каскадные задержки анимации для панелей */
-        #about { animation-delay: 0.1s; }
-        #stack { animation-delay: 0.2s; }
-        #teams { animation-delay: 0.3s; }
-        #projects { animation-delay: 0.4s; }
-        .sidebar .glass-panel:nth-child(1) { animation-delay: 0.5s; }
-        .sidebar .glass-panel:nth-child(2) { animation-delay: 0.6s; }
+        /* Ускоренные каскадные задержки анимации (шаг 0.05s) */
+        #about { animation-delay: 0.05s; }
+        #stack { animation-delay: 0.1s; }
+        #teams { animation-delay: 0.15s; }
+        #projects { animation-delay: 0.2s; }
+        .sidebar .glass-panel:nth-child(1) { animation-delay: 0.25s; }
+        .sidebar .glass-panel:nth-child(2) { animation-delay: 0.3s; }
 
         h2.section-title {
             font-size: 1.5rem;
@@ -340,7 +340,8 @@
             border-top: 1px solid var(--panel-border);
             margin-top: 50px;
             opacity: 0;
-            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards; /* Появляется самым последним */
+            /* Ускорено до 0.4s с соответствующей задержкой */
+            animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
         }
 
         /* Responsive */
