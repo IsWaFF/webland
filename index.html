@@ -15,7 +15,7 @@
             --bg-color: #0d0d0d;
             --panel-bg: rgba(255, 255, 255, 0.03);
             --panel-border: rgba(255, 255, 255, 0.08);
-            --accent-green: #a8ff00; /* Кислотно-зеленый */
+            --accent-green: #a8ff00;
             --text-main: #e0e0e0;
             --text-muted: #888;
         }
@@ -34,7 +34,6 @@
             overflow-x: hidden;
         }
 
-        /* --- Анимации при загрузке --- */
         @keyframes slideDown {
             from { transform: translateY(-100%); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
@@ -45,7 +44,6 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
-        /* --- Навигация --- */
         header {
             display: flex;
             justify-content: space-between;
@@ -59,20 +57,25 @@
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid var(--panel-border);
-            transform: translateY(0); /* Базовое состояние для transition */
+            transform: translateY(0);
             transition: transform 0.3s ease-in-out;
-            /* Ускорено до 0.4s */
             animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .header-hidden {
-            transform: translateY(-100%); /* Убран !important для плавной работы transition */
+            transform: translateY(-100%);
         }
 
         #dynamic-greeting {
             font-weight: 600;
             font-size: 1.2rem;
             color: var(--accent-green);
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 40px;
         }
 
         nav ul {
@@ -94,7 +97,74 @@
             color: var(--accent-green);
         }
 
-        /* --- Сетка макета --- */
+        .lang-switch-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lang-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: color 0.3s, text-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .lang-label.active {
+            color: #fff;
+            text-shadow: 0 0 8px rgba(168, 255, 0, 0.4);
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 3px;
+            bottom: 3px;
+            background-color: var(--text-muted);
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            border-color: rgba(168, 255, 0, 0.5);
+            background-color: rgba(168, 255, 0, 0.05);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(24px);
+            background-color: var(--accent-green);
+            box-shadow: 0 0 8px rgba(168, 255, 0, 0.6);
+        }
+
         .container {
             max-width: 1400px;
             margin: 100px auto 40px;
@@ -110,7 +180,6 @@
             gap: 30px;
         }
 
-        /* --- Общие стили панелей (Glassmorphism) --- */
         .glass-panel {
             background: var(--panel-bg);
             border: 1px solid var(--panel-border);
@@ -118,7 +187,6 @@
             padding: 30px;
             backdrop-filter: blur(10px);
             transition: transform 0.3s ease, border-color 0.3s ease;
-            /* Ускорено до 0.4s */
             opacity: 0; 
             animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
@@ -128,7 +196,6 @@
             transform: translateY(-2px);
         }
 
-        /* Ускоренные каскадные задержки анимации (шаг 0.05s) */
         #about { animation-delay: 0.05s; }
         #stack { animation-delay: 0.1s; }
         #teams { animation-delay: 0.15s; }
@@ -144,7 +211,6 @@
             padding-bottom: 10px;
         }
 
-        /* --- Hero Section (О себе) --- */
         .hero {
             display: flex;
             align-items: center;
@@ -212,14 +278,12 @@
             color: var(--accent-green);
         }
 
-        /* --- Grid для контента (Стек, Команды, Проекты) --- */
         .content-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
         }
 
-        /* --- Stack --- */
         .stack-list {
             list-style: none;
         }
@@ -248,7 +312,6 @@
             color: var(--text-muted);
         }
 
-        /* --- Teams --- */
         .team-item {
             margin-bottom: 25px;
         }
@@ -284,7 +347,6 @@
             margin-bottom: 5px;
         }
 
-        /* --- Sidebar (The Crew) --- */
         .sidebar {
             display: flex;
             flex-direction: column;
@@ -335,7 +397,6 @@
             font-size: 0.75rem;
         }
 
-        /* --- Footer --- */
         footer {
             text-align: center;
             padding: 30px;
@@ -344,11 +405,9 @@
             border-top: 1px solid var(--panel-border);
             margin-top: 50px;
             opacity: 0;
-            /* Ускорено до 0.4s с соответствующей задержкой */
             animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
         }
 
-        /* Responsive */
         @media (max-width: 1024px) {
             .container {
                 grid-template-columns: 1fr;
@@ -364,6 +423,10 @@
                 gap: 15px;
                 padding: 15px 20px;
             }
+            .header-controls {
+                flex-direction: column;
+                gap: 15px;
+            }
             .hero {
                 flex-direction: column;
                 text-align: center;
@@ -375,13 +438,25 @@
 
     <header id="main-header">
         <div id="dynamic-greeting">Loading...</div>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#stack">Stack</a></li>
-                <li><a href="#projects">Projects</a></li>
-            </ul>
-        </nav>
+        
+        <div class="header-controls">
+            <nav>
+                <ul>
+                    <li><a href="#about" data-i18n="nav-about">About</a></li>
+                    <li><a href="#stack" data-i18n="nav-stack">Stack</a></li>
+                    <li><a href="#projects" data-i18n="nav-projects">Projects</a></li>
+                </ul>
+            </nav>
+            
+            <div class="lang-switch-wrapper">
+                <span class="lang-label active" id="label-en" onclick="setLanguage('en')">EN</span>
+                <label class="switch">
+                    <input type="checkbox" id="lang-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <span class="lang-label" id="label-ru" onclick="setLanguage('ru')">RU</span>
+            </div>
+        </div>
     </header>
 
     <div class="container">
@@ -391,8 +466,8 @@
                 <img src="https://avatars.githubusercontent.com/u/93275675?v=4" alt="WaFF Avatar" class="avatar">
                 <div class="hero-text">
                     <h1>WaFF</h1>
-                    <h3>DevOps Engineer / Automation Specialist</h3>
-                    <p>Started with Linux administration, then dove deep into CI/CD and IaC. Expert in cloud migration and container orchestration. I believe in DevOps efficiency and strive to build reliable, scalable systems with minimal technical debt.</p>
+                    <h3 data-i18n="hero-role">DevOps Engineer / Automation Specialist</h3>
+                    <p data-i18n="hero-desc">Started with Linux administration, then dove deep into CI/CD and IaC. Expert in cloud migration and container orchestration. I believe in DevOps efficiency and strive to build reliable, scalable systems with minimal technical debt.</p>
                     <div class="socials">
                         <a href="https://github.com/IsWaFF" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://t.me/asseryx" target="_blank"><i class="fab fa-telegram"></i></a>
@@ -402,19 +477,19 @@
 
             <div class="content-grid">
                 <section id="stack" class="glass-panel">
-                    <h2 class="section-title">Core Stack</h2>
+                    <h2 class="section-title" data-i18n="stack-title">Core Stack</h2>
                     <ul class="stack-list">
                         <li>
                             <i class="fab fa-aws"></i>
                             <div class="stack-info">
-                                <h4>Cloud & IaC</h4>
+                                <h4 data-i18n="stack-cloud">Cloud & IaC</h4>
                                 <p>AWS, Terraform, Ansible</p>
                             </div>
                         </li>
                         <li>
                             <i class="fab fa-docker"></i>
                             <div class="stack-info">
-                                <h4>Containers</h4>
+                                <h4 data-i18n="stack-containers">Containers</h4>
                                 <p>Docker, Kubernetes (K8s), Helm</p>
                             </div>
                         </li>
@@ -428,14 +503,14 @@
                         <li>
                             <i class="fas fa-chart-line"></i>
                             <div class="stack-info">
-                                <h4>Observability</h4>
+                                <h4 data-i18n="stack-obs">Observability</h4>
                                 <p>Prometheus, Grafana, ELK</p>
                             </div>
                         </li>
                         <li>
                             <i class="fab fa-linux"></i>
                             <div class="stack-info">
-                                <h4>Basics</h4>
+                                <h4 data-i18n="stack-basics">Basics</h4>
                                 <p>Linux, Bash, Python, Networking</p>
                             </div>
                         </li>
@@ -443,14 +518,14 @@
                 </section>
 
                 <section id="teams" class="glass-panel">
-                    <h2 class="section-title">Experience & Teams</h2>
+                    <h2 class="section-title" data-i18n="teams-title">Experience & Teams</h2>
                     
                     <div class="team-item">
                         <div class="team-logo-outlaw">
                             <span class="out">out</span><span class="law">law</span>
                         </div>
-                        <p><strong>DevOps Engineer</strong> (202X - Present)</p>
-                        <p>Introduced a robust Version Control System (VCS) workflow. Architected and built the entire core infrastructure from scratch, ensuring high availability and seamless deployment cycles.</p>
+                        <p><strong data-i18n="outlaw-role">DevOps Engineer</strong> <span data-i18n="outlaw-date">(202X - Present)</span></p>
+                        <p data-i18n="outlaw-desc">Introduced a robust Version Control System (VCS) workflow. Architected and built the entire core infrastructure from scratch, ensuring high availability and seamless deployment cycles.</p>
                         <div class="tech-tags">
                             <span>Terraform</span>
                             <span>AWS</span>
@@ -459,8 +534,8 @@
                     </div>
 
                     <div class="team-item">
-                        <h4 style="color: #fff; margin-bottom: 5px;">Previous Team</h4>
-                        <p>Migrated legacy monolithic systems to microservices architecture. Optimized existing CI/CD pipelines reducing deployment time by 40%.</p>
+                        <h4 style="color: #fff; margin-bottom: 5px;" data-i18n="prev-team-title">Previous Team</h4>
+                        <p data-i18n="prev-team-desc">Migrated legacy monolithic systems to microservices architecture. Optimized existing CI/CD pipelines reducing deployment time by 40%.</p>
                         <div class="tech-tags">
                             <span>Docker</span>
                             <span>K8s</span>
@@ -470,14 +545,14 @@
             </div>
 
             <section id="projects" class="glass-panel">
-                <h2 class="section-title">Selected Projects</h2>
+                <h2 class="section-title" data-i18n="projects-title">Selected Projects</h2>
                 <div class="team-item">
-                    <h4 style="color: #fff; margin-bottom: 5px;">Scalable K8s Cluster Automation</h4>
-                    <p>Designed a fully automated Kubernetes cluster provisioning system using Terraform and Ansible. Implemented GitOps approach using ArgoCD for declarative deployments.</p>
+                    <h4 style="color: #fff; margin-bottom: 5px;" data-i18n="proj1-title">Scalable K8s Cluster Automation</h4>
+                    <p data-i18n="proj1-desc">Designed a fully automated Kubernetes cluster provisioning system using Terraform and Ansible. Implemented GitOps approach using ArgoCD for declarative deployments.</p>
                 </div>
                 <div class="team-item">
-                    <h4 style="color: #fff; margin-bottom: 5px;">Zero-Downtime Migration</h4>
-                    <p>Successfully migrated production databases with zero downtime during peak hours, utilizing logical replication and careful traffic routing.</p>
+                    <h4 style="color: #fff; margin-bottom: 5px;" data-i18n="proj2-title">Zero-Downtime Migration</h4>
+                    <p data-i18n="proj2-desc">Successfully migrated production databases with zero downtime during peak hours, utilizing logical replication and careful traffic routing.</p>
                 </div>
             </section>
 
@@ -485,20 +560,20 @@
 
         <aside class="sidebar">
             <section class="glass-panel">
-                <h2 class="section-title">The Crew</h2>
+                <h2 class="section-title" data-i18n="crew-title">The Crew</h2>
                 <div class="crew-list">
                     <div class="crew-member">
                         <img src="https://cdn.discordapp.com/avatars/1028744955402916073/3cb1cc8252405579a344a248ab284c8b.webp?size=128" alt="Crew">
                         <div class="crew-info">
                             <h5>Andriko.</h5>
-                            <p>Nice guy, not a Jew / electrician</p>
+                            <p data-i18n="crew-andriko">Nice guy, not a Jew / electrician</p>
                         </div>
                     </div>
                     <div class="crew-member">
                         <img src="https://discordapp.com/assets/0e291f67c9274a1abdddeb3fd919cbaa.png" alt="Crew">
                         <div class="crew-info">
                             <h5>/ (slash)</h5>
-                            <p>Backend / С ++ / Lead Dev</p>
+                            <p data-i18n="crew-slash">Backend / С ++ / Lead Dev</p>
                         </div>
                     </div>
                     <div class="crew-member">
@@ -512,43 +587,43 @@
                         <img src="https://cdn.discordapp.com/avatars/1330062857332850709/8a1aab2cea92e24a9d255a1c8da2dfac.webp?size=128" alt="Crew">
                         <div class="crew-info">
                             <h5>Limit</h5>
-                            <p>HVH trash</p>
+                            <p data-i18n="crew-limit">HVH trash</p>
                         </div>
                     </div>
                     <div class="crew-member">
                         <img src="https://cdn.discordapp.com/avatars/1202202992011644938/c9d64c58ed0bf7a41f041594cc3d9d66.webp?size=128" alt="Crew">
                         <div class="crew-info">
                             <h5>chertvahvh</h5>
-                            <p>Cargo 200</p>
+                            <p data-i18n="crew-chert">Cargo 200</p>
                         </div>
                     </div>
                     <div class="crew-member">
                         <img src="https://cdn.discordapp.com/avatars/1432860924598812792/daa20156cf7959ce90bdf73b7ad9d855.webp?size=128" alt="Crew">
                         <div class="crew-info">
                             <h5>Onico</h5>
-                            <p>umbrella god</p>
+                            <p data-i18n="crew-onico">umbrella god</p>
                         </div>
                     </div>
                     <div class="crew-member">
                         <img src="https://cdn.discordapp.com/avatars/1363184866749055206/da5e31aacdee1ba12a2779a892bb8d1e.webp?size=128" alt="Crew">
                         <div class="crew-info">
                             <h5>allahbabax</h5>
-                            <p>skeet great cheat</p>
+                            <p data-i18n="crew-allah">skeet great cheat</p>
                         </div>
                     </div>
                     <div class="crew-member">
                         <img src="https://cdn.discordapp.com/avatars/1163861840762257528/53066b1c9ccdbf9dbfd0f34cf446fa7d.webp?size=128" alt="Crew">
                         <div class="crew-info">
                             <h5>пutausь</h5>
-                            <p>Lc king</p>
+                            <p data-i18n="crew-putaus">Lc king</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <section class="glass-panel" style="text-align: center;">
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Need a dedicated DevOps?</p>
-                <a href="mailto:your.email@example.com" style="display: inline-block; padding: 10px 20px; background: var(--accent-green); color: #000; text-decoration: none; font-weight: bold; border-radius: 6px; transition: opacity 0.3s;">
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;" data-i18n="contact-desc">Need a dedicated DevOps?</p>
+                <a href="mailto:your.email@example.com" style="display: inline-block; padding: 10px 20px; background: var(--accent-green); color: #000; text-decoration: none; font-weight: bold; border-radius: 6px; transition: opacity 0.3s;" data-i18n="contact-btn">
                     Contact Me
                 </a>
             </section>
@@ -556,10 +631,83 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 WaFF. All rights reserved. | Built with ☕ and <i class="fas fa-terminal" style="color: var(--accent-green);"></i></p>
+        <p><span data-i18n="footer-text">&copy; 2026 WaFF. All rights reserved. | Built with ☕ and</span> <i class="fas fa-terminal" style="color: var(--accent-green);"></i></p>
     </footer>
 
     <script>
+        // --- Локализация (Словарь переводов) ---
+        const translations = {
+            en: {
+                "nav-about": "About",
+                "nav-stack": "Stack",
+                "nav-projects": "Projects",
+                "hero-role": "DevOps Engineer / Automation Specialist",
+                "hero-desc": "Started with Linux administration, then dove deep into CI/CD and IaC. Expert in cloud migration and container orchestration. I believe in DevOps efficiency and strive to build reliable, scalable systems with minimal technical debt.",
+                "stack-title": "Core Stack",
+                "stack-cloud": "Cloud & IaC",
+                "stack-containers": "Containers",
+                "stack-obs": "Observability",
+                "stack-basics": "Basics",
+                "teams-title": "Experience & Teams",
+                "outlaw-role": "DevOps Engineer",
+                "outlaw-date": "(202X - Present)",
+                "outlaw-desc": "Introduced a robust Version Control System (VCS) workflow. Architected and built the entire core infrastructure from scratch, ensuring high availability and seamless deployment cycles.",
+                "prev-team-title": "Previous Team",
+                "prev-team-desc": "Migrated legacy monolithic systems to microservices architecture. Optimized existing CI/CD pipelines reducing deployment time by 40%.",
+                "projects-title": "Selected Projects",
+                "proj1-title": "Scalable K8s Cluster Automation",
+                "proj1-desc": "Designed a fully automated Kubernetes cluster provisioning system using Terraform and Ansible. Implemented GitOps approach using ArgoCD for declarative deployments.",
+                "proj2-title": "Zero-Downtime Migration",
+                "proj2-desc": "Successfully migrated production databases with zero downtime during peak hours, utilizing logical replication and careful traffic routing.",
+                "crew-title": "The Crew",
+                "crew-andriko": "Nice guy, not a Jew / electrician",
+                "crew-slash": "Backend / C++ / Lead Dev",
+                "crew-limit": "HVH trash",
+                "crew-chert": "Cargo 200",
+                "crew-onico": "umbrella god",
+                "crew-allah": "skeet great cheat",
+                "crew-putaus": "Lc king",
+                "contact-desc": "Need a dedicated DevOps?",
+                "contact-btn": "Contact Me",
+                "footer-text": "© 2026 WaFF. All rights reserved. | Built with ☕ and "
+            },
+            ru: {
+                "nav-about": "Обо мне",
+                "nav-stack": "Стек",
+                "nav-projects": "Проекты",
+                "hero-role": "DevOps-инженер / Специалист по автоматизации",
+                "hero-desc": "Начинал с администрирования Linux, затем плотно ушел в CI/CD и IaC. Эксперт по миграции в облако и оркестрации контейнеров. Топлю за эффективность DevOps и стремлюсь строить надежные, масштабируемые системы без лишнего техдолга.",
+                "stack-title": "Основной стек",
+                "stack-cloud": "Облака и IaC",
+                "stack-containers": "Контейнеры",
+                "stack-obs": "Мониторинг",
+                "stack-basics": "База",
+                "teams-title": "Опыт и Команды",
+                "outlaw-role": "DevOps-инженер",
+                "outlaw-date": "(202X - Настоящее время)",
+                "outlaw-desc": "Внедрил надежный воркфлоу работы с VCS. Спроектировал и развернул всю базовую инфраструктуру с нуля, обеспечив высокую доступность и бесперебойные циклы деплоя.",
+                "prev-team-title": "Прошлый проект",
+                "prev-team-desc": "Перенес устаревшие монолитные системы на микросервисную архитектуру. Оптимизировал CI/CD пайплайны, сократив время развертывания на 40%.",
+                "projects-title": "Избранные проекты",
+                "proj1-title": "Автоматизация масштабирования K8s",
+                "proj1-desc": "Разработал полностью автоматизированную систему развертывания Kubernetes-кластеров через Terraform и Ansible. Внедрил подход GitOps с помощью ArgoCD для декларативных деплоев.",
+                "proj2-title": "Миграция без даунтайма (Zero-Downtime)",
+                "proj2-desc": "Успешно мигрировал продакшен-базы данных без простоев в часы пик, используя логическую репликацию и аккуратную маршрутизацию трафика.",
+                "crew-title": "Команда",
+                "crew-andriko": "Хороший парень, не еврей / электрик",
+                "crew-slash": "Backend / C++ / Lead Dev",
+                "crew-limit": "HVH мусор",
+                "crew-chert": "Груз 200",
+                "crew-onico": "бог амбреллы",
+                "crew-allah": "скит лучший чит",
+                "crew-putaus": "король Lc",
+                "contact-desc": "Нужен толковый DevOps?",
+                "contact-btn": "Связаться",
+                "footer-text": "© 2026 WaFF. Все права защищены. | Собрано с ☕ и "
+            }
+        };
+
+        // --- Инициализация и Приветствие ---
         document.addEventListener('DOMContentLoaded', () => {
             const greetings = [
                 "q, im WaFF",
@@ -573,29 +721,76 @@
             
             const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
             document.getElementById('dynamic-greeting').innerText = randomGreeting;
+
+            // Восстановление языка из localStorage при загрузке
+            const savedLang = localStorage.getItem('site_lang') || 'en';
+            setLanguage(savedLang);
         });
 
+        // --- Анимация шапки ---
         const header = document.getElementById('main-header');
-
-        // Снимаем блокировку свойства transform после завершения начальной анимации
         header.addEventListener('animationend', () => {
             header.style.animation = 'none';
         });
 
-        // --- Логика скрытия шапки при скролле ---
         let lastScrollTop = 0;
-
         window.addEventListener('scroll', () => {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
             if (scrollTop > lastScrollTop && scrollTop > 80) {
                 header.classList.add('header-hidden');
             } else {
                 header.classList.remove('header-hidden');
             }
-            
             lastScrollTop = scrollTop;
         });
+
+        // --- Логика переключателя языков ---
+        const langToggle = document.getElementById('lang-toggle');
+        const labelEn = document.getElementById('label-en');
+        const labelRu = document.getElementById('label-ru');
+
+        langToggle.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                updateActiveLanguage('ru');
+            } else {
+                updateActiveLanguage('en');
+            }
+        });
+
+        window.setLanguage = function(lang) {
+            if (lang === 'ru') {
+                langToggle.checked = true;
+                updateActiveLanguage('ru');
+            } else {
+                langToggle.checked = false;
+                updateActiveLanguage('en');
+            }
+        };
+
+        function updateActiveLanguage(lang) {
+            // Визуальное обновление ползунка
+            if (lang === 'ru') {
+                labelRu.classList.add('active');
+                labelEn.classList.remove('active');
+            } else {
+                labelEn.classList.add('active');
+                labelRu.classList.remove('active');
+            }
+
+            // Сохраняем выбор юзера
+            localStorage.setItem('site_lang', lang);
+
+            // Применяем переводы
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+            
+            // Замена языка для тега html (помогает поисковикам и читалкам)
+            document.documentElement.lang = lang;
+        }
     </script>
 </body>
 </html>
