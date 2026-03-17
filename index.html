@@ -186,14 +186,18 @@
             border-radius: 16px;
             padding: 30px;
             backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, border-color 0.3s ease;
             opacity: 0; 
             animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            
+            /* Подготовка для JS-наклона, убрал конфликтующий transition: transform */
+            position: relative;
+            transition: border-color 0.3s ease; 
+            will-change: transform;
         }
 
         .glass-panel:hover {
             border-color: rgba(168, 255, 0, 0.3);
-            transform: translateY(-2px);
+            z-index: 10; /* Чтобы карточка вылезала поверх остальных, а не под них */
         }
 
         #about { animation-delay: 0.05s; }
@@ -266,6 +270,7 @@
             margin-top: 20px;
             display: flex;
             gap: 15px;
+            align-items: center;
         }
 
         .socials a {
@@ -276,6 +281,61 @@
 
         .socials a:hover {
             color: var(--accent-green);
+        }
+
+        /* --- Discord Tooltip Styles --- */
+        .discord-wrapper {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .discord-wrapper:hover {
+            color: var(--accent-green);
+        }
+
+        .discord-wrapper .tooltip {
+            visibility: hidden;
+            background-color: rgba(20, 20, 20, 0.95);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 6px 12px;
+            position: absolute;
+            z-index: 20; /* Поверх всего */
+            bottom: 130%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            font-size: 0.8rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            white-space: nowrap;
+            border: 1px solid var(--panel-border);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            pointer-events: none;
+        }
+
+        .discord-wrapper .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--panel-border) transparent transparent transparent;
+        }
+
+        .discord-wrapper:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
 
         .content-grid {
@@ -471,6 +531,10 @@
                     <div class="socials">
                         <a href="https://github.com/IsWaFF" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://t.me/asseryx" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <div class="discord-wrapper" id="discord-btn">
+                            <span class="tooltip" id="discord-tooltip">apbyzov</span>
+                            <i class="fab fa-discord"></i>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -635,160 +699,160 @@
     </footer>
 
     <script>
-        // --- Локализация (Словарь переводов) ---
         const translations = {
             en: {
-                "nav-about": "About",
-                "nav-stack": "Stack",
-                "nav-projects": "Projects",
+                "nav-about": "About", "nav-stack": "Stack", "nav-projects": "Projects",
                 "hero-role": "DevOps Engineer / Automation Specialist",
                 "hero-desc": "Started with Linux administration, then dove deep into CI/CD and IaC. Expert in cloud migration and container orchestration. I believe in DevOps efficiency and strive to build reliable, scalable systems with minimal technical debt.",
-                "stack-title": "Core Stack",
-                "stack-cloud": "Cloud & IaC",
-                "stack-containers": "Containers",
-                "stack-obs": "Observability",
-                "stack-basics": "Basics",
-                "teams-title": "Experience & Teams",
-                "outlaw-role": "DevOps Engineer",
-                "outlaw-date": "(202X - Present)",
+                "stack-title": "Core Stack", "stack-cloud": "Cloud & IaC", "stack-containers": "Containers",
+                "stack-obs": "Observability", "stack-basics": "Basics", "teams-title": "Experience & Teams",
+                "outlaw-role": "DevOps Engineer", "outlaw-date": "(202X - Present)",
                 "outlaw-desc": "Introduced a robust Version Control System (VCS) workflow. Architected and built the entire core infrastructure from scratch, ensuring high availability and seamless deployment cycles.",
-                "prev-team-title": "Previous Team",
-                "prev-team-desc": "Migrated legacy monolithic systems to microservices architecture. Optimized existing CI/CD pipelines reducing deployment time by 40%.",
-                "projects-title": "Selected Projects",
-                "proj1-title": "Scalable K8s Cluster Automation",
+                "prev-team-title": "Previous Team", "prev-team-desc": "Migrated legacy monolithic systems to microservices architecture. Optimized existing CI/CD pipelines reducing deployment time by 40%.",
+                "projects-title": "Selected Projects", "proj1-title": "Scalable K8s Cluster Automation",
                 "proj1-desc": "Designed a fully automated Kubernetes cluster provisioning system using Terraform and Ansible. Implemented GitOps approach using ArgoCD for declarative deployments.",
-                "proj2-title": "Zero-Downtime Migration",
-                "proj2-desc": "Successfully migrated production databases with zero downtime during peak hours, utilizing logical replication and careful traffic routing.",
-                "crew-title": "The Crew",
-                "crew-andriko": "Nice guy, not a Jew / electrician",
-                "crew-slash": "Backend / C++ / Lead Dev",
-                "crew-limit": "HVH trash",
-                "crew-chert": "Cargo 200",
-                "crew-onico": "umbrella god",
-                "crew-allah": "skeet great cheat",
-                "crew-putaus": "Lc king",
-                "contact-desc": "Need a dedicated DevOps?",
-                "contact-btn": "Contact Me",
-                "footer-text": "© 2026 WaFF. All rights reserved. | Built with ☕ and "
+                "proj2-title": "Zero-Downtime Migration", "proj2-desc": "Successfully migrated production databases with zero downtime during peak hours, utilizing logical replication and careful traffic routing.",
+                "crew-title": "The Crew", "crew-andriko": "Nice guy, not a Jew / electrician", "crew-slash": "Backend / C++ / Lead Dev",
+                "crew-limit": "HVH trash", "crew-chert": "Cargo 200", "crew-onico": "umbrella god",
+                "crew-allah": "skeet great cheat", "crew-putaus": "Lc king", "contact-desc": "Need a dedicated DevOps?",
+                "contact-btn": "Contact Me", "footer-text": "© 2026 WaFF. All rights reserved. | Built with ☕ and "
             },
             ru: {
-                "nav-about": "Обо мне",
-                "nav-stack": "Стек",
-                "nav-projects": "Проекты",
+                "nav-about": "Обо мне", "nav-stack": "Стек", "nav-projects": "Проекты",
                 "hero-role": "DevOps-инженер / Специалист по автоматизации",
                 "hero-desc": "Начинал с администрирования Linux, затем плотно ушел в CI/CD и IaC. Эксперт по миграции в облако и оркестрации контейнеров. Топлю за эффективность DevOps и стремлюсь строить надежные, масштабируемые системы без лишнего техдолга.",
-                "stack-title": "Основной стек",
-                "stack-cloud": "Облака и IaC",
-                "stack-containers": "Контейнеры",
-                "stack-obs": "Мониторинг",
-                "stack-basics": "База",
-                "teams-title": "Опыт и Команды",
-                "outlaw-role": "DevOps-инженер",
-                "outlaw-date": "(202X - Настоящее время)",
+                "stack-title": "Основной стек", "stack-cloud": "Облака и IaC", "stack-containers": "Контейнеры",
+                "stack-obs": "Мониторинг", "stack-basics": "База", "teams-title": "Опыт и Команды",
+                "outlaw-role": "DevOps-инженер", "outlaw-date": "(202X - Настоящее время)",
                 "outlaw-desc": "Внедрил надежный воркфлоу работы с VCS. Спроектировал и развернул всю базовую инфраструктуру с нуля, обеспечив высокую доступность и бесперебойные циклы деплоя.",
-                "prev-team-title": "Прошлый проект",
-                "prev-team-desc": "Перенес устаревшие монолитные системы на микросервисную архитектуру. Оптимизировал CI/CD пайплайны, сократив время развертывания на 40%.",
-                "projects-title": "Избранные проекты",
-                "proj1-title": "Автоматизация масштабирования K8s",
+                "prev-team-title": "Прошлый проект", "prev-team-desc": "Перенес устаревшие монолитные системы на микросервисную архитектуру. Оптимизировал CI/CD пайплайны, сократив время развертывания на 40%.",
+                "projects-title": "Избранные проекты", "proj1-title": "Автоматизация масштабирования K8s",
                 "proj1-desc": "Разработал полностью автоматизированную систему развертывания Kubernetes-кластеров через Terraform и Ansible. Внедрил подход GitOps с помощью ArgoCD для декларативных деплоев.",
-                "proj2-title": "Миграция без даунтайма (Zero-Downtime)",
-                "proj2-desc": "Успешно мигрировал продакшен-базы данных без простоев в часы пик, используя логическую репликацию и аккуратную маршрутизацию трафика.",
-                "crew-title": "Команда",
-                "crew-andriko": "Хороший парень, не еврей / электрик",
-                "crew-slash": "Backend / C++ / Lead Dev",
-                "crew-limit": "HVH мусор",
-                "crew-chert": "Груз 200",
-                "crew-onico": "бог амбреллы",
-                "crew-allah": "скит лучший чит",
-                "crew-putaus": "король Lc",
-                "contact-desc": "Нужен толковый DevOps?",
-                "contact-btn": "Связаться",
-                "footer-text": "© 2026 WaFF. Все права защищены. | Собрано с ☕ и "
+                "proj2-title": "Миграция без даунтайма (Zero-Downtime)", "proj2-desc": "Успешно мигрировал продакшен-базы данных без простоев в часы пик, используя логическую репликацию и аккуратную маршрутизацию трафика.",
+                "crew-title": "Команда", "crew-andriko": "Хороший парень, не еврей / электрик", "crew-slash": "Backend / C++ / Lead Dev",
+                "crew-limit": "HVH мусор", "crew-chert": "Груз 200", "crew-onico": "бог амбреллы",
+                "crew-allah": "скит лучший чит", "crew-putaus": "король Lc", "contact-desc": "Нужен толковый DevOps?",
+                "contact-btn": "Связаться", "footer-text": "© 2026 WaFF. Все права защищены. | Собрано с ☕ и "
             }
         };
 
-        // --- Инициализация и Приветствие ---
         document.addEventListener('DOMContentLoaded', () => {
-            const greetings = [
-                "q, im WaFF",
-                "hey, im WaFF",
-                "hi, im WaFF",
-                "hello, im WaFF",
-                "yo, im WaFF",
-                "sup, im WaFF",
-                "sudo cat WaFF"
-            ];
-            
-            const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
-            document.getElementById('dynamic-greeting').innerText = randomGreeting;
+            const greetings = ["q, im WaFF", "hey, im WaFF", "hi, im WaFF", "hello, im WaFF", "yo, im WaFF", "sup, im WaFF", "sudo cat WaFF"];
+            document.getElementById('dynamic-greeting').innerText = greetings[Math.floor(Math.random() * greetings.length)];
 
-            // Восстановление языка из localStorage при загрузке
             const savedLang = localStorage.getItem('site_lang') || 'en';
             setLanguage(savedLang);
+
+            // --- Discord Copy Logic ---
+            const discordBtn = document.getElementById('discord-btn');
+            const discordTooltip = document.getElementById('discord-tooltip');
+            if (discordBtn) {
+                discordBtn.addEventListener('click', () => {
+                    navigator.clipboard.writeText('apbyzov').then(() => {
+                        const currentLang = localStorage.getItem('site_lang') || 'en';
+                        discordTooltip.innerText = currentLang === 'ru' ? "Скопировано!" : "Copied!";
+                        discordTooltip.style.color = "var(--accent-green)";
+                        setTimeout(() => { discordTooltip.innerText = "apbyzov"; discordTooltip.style.color = "#fff"; }, 2000);
+                    }).catch(err => console.error('Copy failed: ', err));
+                });
+            }
+
+            // --- 3D TILT EFFECT (БЕЗОПАСНЫЙ И АККУРАТНЫЙ) ---
+            if (window.innerWidth > 768) {
+                const panels = document.querySelectorAll('.glass-panel');
+                
+                panels.forEach(panel => {
+                    // ФИКС 1: Снимаем блок с трансформаций после появления
+                    panel.addEventListener('animationend', () => {
+                        panel.style.opacity = '1';
+                        panel.style.animation = 'none';
+                    });
+
+                    panel.addEventListener('mousemove', (e) => {
+                        const rect = panel.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        
+                        // ФИКС 2: Аккуратный угол наклона (8 градусов)
+                        const maxTilt = 8; 
+                        
+                        const rotateX = ((y - centerY) / centerY) * -maxTilt;
+                        const rotateY = ((x - centerX) / centerX) * maxTilt;
+                        
+                        // Быстрое следование за мышью + небольшое увеличение scale(1.02)
+                        panel.style.transition = 'none';
+                        panel.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                        // ФИКС 3: Карточка вылезает поверх остальных, а не под них
+                        panel.style.zIndex = '10';
+                    });
+
+                    panel.addEventListener('mouseleave', () => {
+                        // Плавный возврат на место
+                        panel.style.transition = 'transform 0.5s ease-out, border-color 0.3s ease';
+                        panel.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                        panel.style.zIndex = '1'; // Сбрасываем z-index
+                    });
+                });
+            }
         });
 
-        // --- Анимация шапки ---
-        const header = document.getElementById('main-header');
-        header.addEventListener('animationend', () => {
-            header.style.animation = 'none';
-        });
-
+        // Header Hide Logic
         let lastScrollTop = 0;
         window.addEventListener('scroll', () => {
+            const currentHeader = document.getElementById('main-header');
+            if (!currentHeader) return;
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             if (scrollTop > lastScrollTop && scrollTop > 80) {
-                header.classList.add('header-hidden');
+                currentHeader.classList.add('header-hidden');
             } else {
-                header.classList.remove('header-hidden');
+                currentHeader.classList.remove('header-hidden');
             }
             lastScrollTop = scrollTop;
         });
 
-        // --- Логика переключателя языков ---
+        // Lang Switch Logic
         const langToggle = document.getElementById('lang-toggle');
         const labelEn = document.getElementById('label-en');
         const labelRu = document.getElementById('label-ru');
 
-        langToggle.addEventListener('change', (e) => {
-            if (e.target.checked) {
-                updateActiveLanguage('ru');
-            } else {
-                updateActiveLanguage('en');
-            }
-        });
+        if (langToggle) {
+            langToggle.addEventListener('change', (e) => {
+                updateActiveLanguage(e.target.checked ? 'ru' : 'en');
+            });
+        }
 
         window.setLanguage = function(lang) {
-            if (lang === 'ru') {
-                langToggle.checked = true;
-                updateActiveLanguage('ru');
-            } else {
-                langToggle.checked = false;
-                updateActiveLanguage('en');
+            const currentLangToggle = document.getElementById('lang-toggle');
+            if (currentLangToggle) {
+                currentLangToggle.checked = (lang === 'ru');
+                updateActiveLanguage(lang);
             }
         };
 
         function updateActiveLanguage(lang) {
-            // Визуальное обновление ползунка
-            if (lang === 'ru') {
-                labelRu.classList.add('active');
-                labelEn.classList.remove('active');
-            } else {
-                labelEn.classList.add('active');
-                labelRu.classList.remove('active');
+            const currentLabelEn = document.getElementById('label-en');
+            const currentLabelRu = document.getElementById('label-ru');
+            
+            if (currentLabelRu && currentLabelEn) {
+                if (lang === 'ru') {
+                    currentLabelRu.classList.add('active');
+                    currentLabelEn.classList.remove('active');
+                } else {
+                    currentLabelEn.classList.add('active');
+                    currentLabelRu.classList.remove('active');
+                }
             }
 
-            // Сохраняем выбор юзера
             localStorage.setItem('site_lang', lang);
 
-            // Применяем переводы
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    el.innerText = translations[lang][key];
-                }
+                if (translations[lang][key]) el.innerText = translations[lang][key];
             });
             
-            // Замена языка для тега html (помогает поисковикам и читалкам)
             document.documentElement.lang = lang;
         }
     </script>
