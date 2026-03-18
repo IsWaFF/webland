@@ -63,7 +63,7 @@
         }
 
         .header-hidden {
-            transform: translateY(-100%);
+            transform: translateY(-100%) !important;
         }
 
         #dynamic-greeting {
@@ -188,8 +188,6 @@
             backdrop-filter: blur(10px);
             opacity: 0; 
             animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            
-            /* Подготовка для JS-наклона, убрал конфликтующий transition: transform */
             position: relative;
             transition: border-color 0.3s ease; 
             will-change: transform;
@@ -197,7 +195,7 @@
 
         .glass-panel:hover {
             border-color: rgba(168, 255, 0, 0.3);
-            z-index: 10; /* Чтобы карточка вылезала поверх остальных, а не под них */
+            z-index: 10;
         }
 
         #about { animation-delay: 0.05s; }
@@ -306,7 +304,7 @@
             border-radius: 6px;
             padding: 6px 12px;
             position: absolute;
-            z-index: 20; /* Поверх всего */
+            z-index: 20;
             bottom: 130%;
             left: 50%;
             transform: translateX(-50%) translateY(10px);
@@ -757,12 +755,19 @@
                 });
             }
 
-            // --- 3D TILT EFFECT (БЕЗОПАСНЫЙ И АККУРАТНЫЙ) ---
+            // --- Header Fix: Снимаем блокировку после анимации ---
+            const header = document.getElementById('main-header');
+            if (header) {
+                header.addEventListener('animationend', () => {
+                    header.style.animation = 'none';
+                });
+            }
+
+            // --- 3D TILT EFFECT ---
             if (window.innerWidth > 768) {
                 const panels = document.querySelectorAll('.glass-panel');
                 
                 panels.forEach(panel => {
-                    // ФИКС 1: Снимаем блок с трансформаций после появления
                     panel.addEventListener('animationend', () => {
                         panel.style.opacity = '1';
                         panel.style.animation = 'none';
@@ -776,24 +781,20 @@
                         const centerX = rect.width / 2;
                         const centerY = rect.height / 2;
                         
-                        // ФИКС 2: Аккуратный угол наклона (8 градусов)
                         const maxTilt = 8; 
                         
                         const rotateX = ((y - centerY) / centerY) * -maxTilt;
                         const rotateY = ((x - centerX) / centerX) * maxTilt;
                         
-                        // Быстрое следование за мышью + небольшое увеличение scale(1.02)
                         panel.style.transition = 'none';
                         panel.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-                        // ФИКС 3: Карточка вылезает поверх остальных, а не под них
                         panel.style.zIndex = '10';
                     });
 
                     panel.addEventListener('mouseleave', () => {
-                        // Плавный возврат на место
                         panel.style.transition = 'transform 0.5s ease-out, border-color 0.3s ease';
                         panel.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-                        panel.style.zIndex = '1'; // Сбрасываем z-index
+                        panel.style.zIndex = '1'; 
                     });
                 });
             }
