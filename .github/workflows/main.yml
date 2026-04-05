@@ -6,22 +6,21 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Build Docker image
         run: |
-          # Собираем образ с тегом 'latest'
           docker build -t webland-nginx .
 
       - name: Deploy Container
         run: |
-          # Останавливаем и удаляем старый контейнер, если он есть
           docker stop webland-app || true
           docker rm webland-app || true
           
-          # Запускаем новый
           docker run -d \
             --name webland-app \
             --restart always \
@@ -30,5 +29,4 @@ jobs:
             
       - name: Cleanup
         run: |
-          # Удаляем старые ненужные образы, чтобы не забивать диск (на Micro это важно)
           docker image prune -f
