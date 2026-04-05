@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WaFF | DevOps Engineer</title>
-    
+
     <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/93275675?v=4">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+
     <style>
         :root {
             --bg-color: #0d0d0d;
@@ -35,13 +38,27 @@
         }
 
         @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         @keyframes fadeInUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         header {
@@ -154,12 +171,12 @@
             border-radius: 50%;
         }
 
-        input:checked + .slider {
+        input:checked+.slider {
             border-color: rgba(168, 255, 0, 0.5);
             background-color: rgba(168, 255, 0, 0.05);
         }
 
-        input:checked + .slider:before {
+        input:checked+.slider:before {
             transform: translateX(24px);
             background-color: var(--accent-green);
             box-shadow: 0 0 8px rgba(168, 255, 0, 0.6);
@@ -186,10 +203,10 @@
             border-radius: 16px;
             padding: 30px;
             backdrop-filter: blur(10px);
-            opacity: 0; 
+            opacity: 0;
             animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             position: relative;
-            transition: border-color 0.3s ease; 
+            transition: border-color 0.3s ease;
             will-change: transform;
         }
 
@@ -198,12 +215,29 @@
             z-index: 10;
         }
 
-        #about { animation-delay: 0.05s; }
-        #stack { animation-delay: 0.1s; }
-        #teams { animation-delay: 0.15s; }
-        #projects { animation-delay: 0.2s; }
-        .sidebar .glass-panel:nth-child(1) { animation-delay: 0.25s; }
-        .sidebar .glass-panel:nth-child(2) { animation-delay: 0.3s; }
+        #about {
+            animation-delay: 0.05s;
+        }
+
+        #stack {
+            animation-delay: 0.1s;
+        }
+
+        #teams {
+            animation-delay: 0.15s;
+        }
+
+        #projects {
+            animation-delay: 0.2s;
+        }
+
+        .sidebar .glass-panel:nth-child(1) {
+            animation-delay: 0.25s;
+        }
+
+        .sidebar .glass-panel:nth-child(2) {
+            animation-delay: 0.3s;
+        }
 
         h2.section-title {
             font-size: 1.5rem;
@@ -315,7 +349,7 @@
             font-weight: 400;
             white-space: nowrap;
             border: 1px solid var(--panel-border);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             pointer-events: none;
         }
 
@@ -373,7 +407,7 @@
         .team-item {
             margin-bottom: 25px;
         }
-        
+
         .team-logo-outlaw {
             font-size: 1.8rem;
             font-weight: 800;
@@ -384,9 +418,14 @@
             border-radius: 8px;
             border: 1px solid #222;
         }
-        
-        .team-logo-outlaw .out { color: #fff; }
-        .team-logo-outlaw .law { color: var(--accent-green); }
+
+        .team-logo-outlaw .out {
+            color: #fff;
+        }
+
+        .team-logo-outlaw .law {
+            color: var(--accent-green);
+        }
 
         .team-item p {
             font-size: 0.9rem;
@@ -422,14 +461,14 @@
             align-items: center;
             gap: 15px;
             padding: 10px;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0, 0, 0, 0.3);
             border-radius: 8px;
             border: 1px solid transparent;
             transition: border-color 0.3s;
         }
 
         .crew-member:hover {
-            border-color: rgba(255,255,255,0.1);
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
         .crew-member img {
@@ -470,6 +509,7 @@
             .container {
                 grid-template-columns: 1fr;
             }
+
             .content-grid {
                 grid-template-columns: 1fr;
             }
@@ -481,10 +521,12 @@
                 gap: 15px;
                 padding: 15px 20px;
             }
+
             .header-controls {
                 flex-direction: column;
                 gap: 15px;
             }
+
             .hero {
                 flex-direction: column;
                 text-align: center;
@@ -492,11 +534,12 @@
         }
     </style>
 </head>
+
 <body>
 
     <header id="main-header">
         <div id="dynamic-greeting">Loading...</div>
-        
+
         <div class="header-controls">
             <nav>
                 <ul>
@@ -505,7 +548,7 @@
                     <li><a href="#projects" data-i18n="nav-projects">Projects</a></li>
                 </ul>
             </nav>
-            
+
             <div class="lang-switch-wrapper">
                 <span class="lang-label active" id="label-en" onclick="setLanguage('en')">EN</span>
                 <label class="switch">
@@ -519,13 +562,15 @@
 
     <div class="container">
         <main class="main-content">
-            
+
             <section id="about" class="glass-panel hero">
                 <img src="https://avatars.githubusercontent.com/u/93275675?v=4" alt="WaFF Avatar" class="avatar">
                 <div class="hero-text">
                     <h1>WaFF</h1>
                     <h3 data-i18n="hero-role">DevOps Engineer / Automation Specialist</h3>
-                    <p data-i18n="hero-desc">Started with Linux administration, then dove deep into CI/CD and IaC. Expert in cloud migration and container orchestration. I believe in DevOps efficiency and strive to build reliable, scalable systems with minimal technical debt.</p>
+                    <p data-i18n="hero-desc">Started with Linux administration, then dove deep into CI/CD and IaC.
+                        Expert in cloud migration and container orchestration. I believe in DevOps efficiency and strive
+                        to build reliable, scalable systems with minimal technical debt.</p>
                     <div class="socials">
                         <a href="https://github.com/IsWaFF" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://t.me/asseryx" target="_blank"><i class="fab fa-telegram"></i></a>
@@ -581,13 +626,16 @@
 
                 <section id="teams" class="glass-panel">
                     <h2 class="section-title" data-i18n="teams-title">Experience & Teams</h2>
-                    
+
                     <div class="team-item">
                         <div class="team-logo-outlaw">
                             <span class="out">out</span><span class="law">law</span>
                         </div>
-                        <p><strong data-i18n="outlaw-role">DevOps Engineer</strong> <span data-i18n="outlaw-date">(202X - Present)</span></p>
-                        <p data-i18n="outlaw-desc">Introduced a robust Version Control System (VCS) workflow. Architected and built the entire core infrastructure from scratch, ensuring high availability and seamless deployment cycles.</p>
+                        <p><strong data-i18n="outlaw-role">DevOps Engineer</strong> <span data-i18n="outlaw-date">(202X
+                                - Present)</span></p>
+                        <p data-i18n="outlaw-desc">Introduced a robust Version Control System (VCS) workflow.
+                            Architected and built the entire core infrastructure from scratch, ensuring high
+                            availability and seamless deployment cycles.</p>
                         <div class="tech-tags">
                             <span>Terraform</span>
                             <span>AWS</span>
@@ -597,7 +645,8 @@
 
                     <div class="team-item">
                         <h4 style="color: #fff; margin-bottom: 5px;" data-i18n="prev-team-title">Previous Team</h4>
-                        <p data-i18n="prev-team-desc">Migrated legacy monolithic systems to microservices architecture. Optimized existing CI/CD pipelines reducing deployment time by 40%.</p>
+                        <p data-i18n="prev-team-desc">Migrated legacy monolithic systems to microservices architecture.
+                            Optimized existing CI/CD pipelines reducing deployment time by 40%.</p>
                         <div class="tech-tags">
                             <span>Docker</span>
                             <span>K8s</span>
@@ -609,12 +658,15 @@
             <section id="projects" class="glass-panel">
                 <h2 class="section-title" data-i18n="projects-title">Selected Projects</h2>
                 <div class="team-item">
-                    <h4 style="color: #fff; margin-bottom: 5px;" data-i18n="proj1-title">Scalable K8s Cluster Automation</h4>
-                    <p data-i18n="proj1-desc">Designed a fully automated Kubernetes cluster provisioning system using Terraform and Ansible. Implemented GitOps approach using ArgoCD for declarative deployments.</p>
+                    <h4 style="color: #fff; margin-bottom: 5px;" data-i18n="proj1-title">Scalable K8s Cluster Automation
+                    </h4>
+                    <p data-i18n="proj1-desc">Designed a fully automated Kubernetes cluster provisioning system using
+                        Terraform and Ansible. Implemented GitOps approach using ArgoCD for declarative deployments.</p>
                 </div>
                 <div class="team-item">
                     <h4 style="color: #fff; margin-bottom: 5px;" data-i18n="proj2-title">Zero-Downtime Migration</h4>
-                    <p data-i18n="proj2-desc">Successfully migrated production databases with zero downtime during peak hours, utilizing logical replication and careful traffic routing.</p>
+                    <p data-i18n="proj2-desc">Successfully migrated production databases with zero downtime during peak
+                        hours, utilizing logical replication and careful traffic routing.</p>
                 </div>
             </section>
 
@@ -625,7 +677,8 @@
                 <h2 class="section-title" data-i18n="crew-title">The Crew</h2>
                 <div class="crew-list">
                     <div class="crew-member">
-                        <img src="https://cdn.discordapp.com/avatars/1028744955402916073/3cb1cc8252405579a344a248ab284c8b.webp?size=128" alt="Crew">
+                        <img src="https://cdn.discordapp.com/avatars/1028744955402916073/3cb1cc8252405579a344a248ab284c8b.webp?size=128"
+                            alt="Crew">
                         <div class="crew-info">
                             <h5>Andriko.</h5>
                             <p data-i18n="crew-andriko">Nice guy, not a Jew / electrician</p>
@@ -639,42 +692,48 @@
                         </div>
                     </div>
                     <div class="crew-member">
-                        <img src="https://cdn.discordapp.com/avatars/1144396205066027099/b79a29987915d32e7217bdc2d61814e6.webp?size=128" alt="Crew">
+                        <img src="https://cdn.discordapp.com/avatars/1144396205066027099/b79a29987915d32e7217bdc2d61814e6.webp?size=128"
+                            alt="Crew">
                         <div class="crew-info">
                             <h5>bftv</h5>
                             <p>SWAG?</p>
                         </div>
                     </div>
                     <div class="crew-member">
-                        <img src="https://cdn.discordapp.com/avatars/1330062857332850709/8a1aab2cea92e24a9d255a1c8da2dfac.webp?size=128" alt="Crew">
+                        <img src="https://cdn.discordapp.com/avatars/1330062857332850709/8a1aab2cea92e24a9d255a1c8da2dfac.webp?size=128"
+                            alt="Crew">
                         <div class="crew-info">
                             <h5>Limit</h5>
                             <p data-i18n="crew-limit">HVH trash</p>
                         </div>
                     </div>
                     <div class="crew-member">
-                        <img src="https://cdn.discordapp.com/avatars/1202202992011644938/c9d64c58ed0bf7a41f041594cc3d9d66.webp?size=128" alt="Crew">
+                        <img src="https://cdn.discordapp.com/avatars/1202202992011644938/c9d64c58ed0bf7a41f041594cc3d9d66.webp?size=128"
+                            alt="Crew">
                         <div class="crew-info">
                             <h5>chertvahvh</h5>
                             <p data-i18n="crew-chert">Cargo 200</p>
                         </div>
                     </div>
                     <div class="crew-member">
-                        <img src="https://cdn.discordapp.com/avatars/1432860924598812792/daa20156cf7959ce90bdf73b7ad9d855.webp?size=128" alt="Crew">
+                        <img src="https://cdn.discordapp.com/avatars/1432860924598812792/daa20156cf7959ce90bdf73b7ad9d855.webp?size=128"
+                            alt="Crew">
                         <div class="crew-info">
                             <h5>Onico</h5>
                             <p data-i18n="crew-onico">umbrella god</p>
                         </div>
                     </div>
                     <div class="crew-member">
-                        <img src="https://cdn.discordapp.com/avatars/1363184866749055206/da5e31aacdee1ba12a2779a892bb8d1e.webp?size=128" alt="Crew">
+                        <img src="https://cdn.discordapp.com/avatars/1363184866749055206/da5e31aacdee1ba12a2779a892bb8d1e.webp?size=128"
+                            alt="Crew">
                         <div class="crew-info">
                             <h5>allahbabax</h5>
                             <p data-i18n="crew-allah">skeet great cheat</p>
                         </div>
                     </div>
                     <div class="crew-member">
-                        <img src="https://cdn.discordapp.com/avatars/1163861840762257528/53066b1c9ccdbf9dbfd0f34cf446fa7d.webp?size=128" alt="Crew">
+                        <img src="https://cdn.discordapp.com/avatars/1163861840762257528/53066b1c9ccdbf9dbfd0f34cf446fa7d.webp?size=128"
+                            alt="Crew">
                         <div class="crew-info">
                             <h5>пutausь</h5>
                             <p data-i18n="crew-putaus">Lc king</p>
@@ -684,8 +743,11 @@
             </section>
 
             <section class="glass-panel" style="text-align: center;">
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;" data-i18n="contact-desc">Need a dedicated DevOps?</p>
-                <a href="mailto:your.email@example.com" style="display: inline-block; padding: 10px 20px; background: var(--accent-green); color: #000; text-decoration: none; font-weight: bold; border-radius: 6px; transition: opacity 0.3s;" data-i18n="contact-btn">
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;" data-i18n="contact-desc">
+                    Need a dedicated DevOps?</p>
+                <a href="mailto:your.email@example.com"
+                    style="display: inline-block; padding: 10px 20px; background: var(--accent-green); color: #000; text-decoration: none; font-weight: bold; border-radius: 6px; transition: opacity 0.3s;"
+                    data-i18n="contact-btn">
                     Contact Me
                 </a>
             </section>
@@ -693,7 +755,8 @@
     </div>
 
     <footer>
-        <p><span data-i18n="footer-text">&copy; 2026 WaFF. All rights reserved. | Built with ☕ and</span> <i class="fas fa-terminal" style="color: var(--accent-green);"></i></p>
+        <p><span data-i18n="footer-text">&copy; 2026 WaFF. All rights reserved. | Built with ☕ and</span> <i
+                class="fas fa-terminal" style="color: var(--accent-green);"></i></p>
     </footer>
 
     <script>
@@ -727,7 +790,7 @@
                 "projects-title": "Избранные проекты", "proj1-title": "Автоматизация масштабирования K8s",
                 "proj1-desc": "Разработал полностью автоматизированную систему развертывания Kubernetes-кластеров через Terraform и Ansible. Внедрил подход GitOps с помощью ArgoCD для декларативных деплоев.",
                 "proj2-title": "Миграция без даунтайма (Zero-Downtime)", "proj2-desc": "Успешно мигрировал продакшен-базы данных без простоев в часы пик, используя логическую репликацию и аккуратную маршрутизацию трафика.",
-                "crew-title": "Команда", "crew-andriko": "Хороший парень, не еврей / электрик", "crew-slash": "Backend / C++ / Lead Dev",
+                "crew-title": "Кентики", "crew-andriko": "Хороший парень, не еврей / электрик", "crew-slash": "Backend / C++ / Lead Dev",
                 "crew-limit": "HVH мусор", "crew-chert": "Груз 200", "crew-onico": "бог амбреллы",
                 "crew-allah": "скит лучший чит", "crew-putaus": "король Lc", "contact-desc": "Нужен толковый DevOps?",
                 "contact-btn": "Связаться", "footer-text": "© 2026 WaFF. Все права защищены. | Собрано с ☕ и "
@@ -766,7 +829,7 @@
             // --- 3D TILT EFFECT ---
             if (window.innerWidth > 768) {
                 const panels = document.querySelectorAll('.glass-panel');
-                
+
                 panels.forEach(panel => {
                     panel.addEventListener('animationend', () => {
                         panel.style.opacity = '1';
@@ -777,15 +840,16 @@
                         const rect = panel.getBoundingClientRect();
                         const x = e.clientX - rect.left;
                         const y = e.clientY - rect.top;
-                        
+
+
                         const centerX = rect.width / 2;
                         const centerY = rect.height / 2;
-                        
-                        const maxTilt = 8; 
-                        
+
+                        const maxTilt = 8;
+
                         const rotateX = ((y - centerY) / centerY) * -maxTilt;
                         const rotateY = ((x - centerX) / centerX) * maxTilt;
-                        
+
                         panel.style.transition = 'none';
                         panel.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
                         panel.style.zIndex = '10';
@@ -794,7 +858,7 @@
                     panel.addEventListener('mouseleave', () => {
                         panel.style.transition = 'transform 0.5s ease-out, border-color 0.3s ease';
                         panel.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-                        panel.style.zIndex = '1'; 
+                        panel.style.zIndex = '1';
                     });
                 });
             }
@@ -825,7 +889,7 @@
             });
         }
 
-        window.setLanguage = function(lang) {
+        window.setLanguage = function (lang) {
             const currentLangToggle = document.getElementById('lang-toggle');
             if (currentLangToggle) {
                 currentLangToggle.checked = (lang === 'ru');
@@ -836,7 +900,7 @@
         function updateActiveLanguage(lang) {
             const currentLabelEn = document.getElementById('label-en');
             const currentLabelRu = document.getElementById('label-ru');
-            
+
             if (currentLabelRu && currentLabelEn) {
                 if (lang === 'ru') {
                     currentLabelRu.classList.add('active');
@@ -853,9 +917,10 @@
                 const key = el.getAttribute('data-i18n');
                 if (translations[lang][key]) el.innerText = translations[lang][key];
             });
-            
+
             document.documentElement.lang = lang;
         }
     </script>
 </body>
+
 </html>
