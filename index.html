@@ -38,13 +38,27 @@
         }
 
         @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         @keyframes fadeInUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         header {
@@ -202,10 +216,21 @@
             z-index: 10;
         }
 
-        #about { animation-delay: 0.05s; }
-        #stack { animation-delay: 0.1s; }
-        #teams { animation-delay: 0.15s; }
-        #projects { animation-delay: 0.2s; }
+        #about {
+            animation-delay: 0.05s;
+        }
+
+        #stack {
+            animation-delay: 0.1s;
+        }
+
+        #teams {
+            animation-delay: 0.15s;
+        }
+
+        #projects {
+            animation-delay: 0.2s;
+        }
 
         h2.section-title {
             font-size: 1.5rem;
@@ -466,7 +491,9 @@
                 <div class="hero-text">
                     <h1>WaFF</h1>
                     <h3 data-i18n="hero-role">Fullstack Developer / DevOps</h3>
-                    <p data-i18n="hero-desc">Started with Linux administration, then dove deep into CI/CD and IaC. Now focused on scalable fullstack solutions, bridging the gap between robust backend architectures and seamless deployments.</p>
+                    <p data-i18n="hero-desc">Started with Linux administration, then dove deep into CI/CD and IaC. Now
+                        focused on scalable fullstack solutions, bridging the gap between robust backend architectures
+                        and seamless deployments.</p>
                     <div class="socials">
                         <a href="https://github.com/IsWaFF" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://t.me/asseryx" target="_blank"><i class="fab fa-telegram"></i></a>
@@ -507,7 +534,7 @@
                             <i class="fas fa-code"></i>
                             <div class="stack-info">
                                 <h4>Development</h4>
-                                <p>C++, Python, TypeScript, Node.js</p>
+                                <p>C++, Python</p>
                             </div>
                         </li>
                         <li>
@@ -525,7 +552,8 @@
 
                     <div class="team-item">
                         <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-                            <svg width="45" height="45" viewBox="-110 -110 220 220" style="filter: drop-shadow(0 0 8px rgba(220,20,20,0.5));">
+                            <svg width="45" height="45" viewBox="-110 -110 220 220"
+                                style="filter: drop-shadow(0 0 8px rgba(220,20,20,0.5));">
                                 <g>
                                     <polygon points="0,-20 20,0 0,20 -20,0" fill="#d11124" />
                                     <polygon points="0,-60 20,-40 0,-20 -20,-40" fill="#ffffff" />
@@ -538,10 +566,14 @@
                                     <polygon points="80,-20 100,0 80,20 60,0" fill="#d11124" />
                                 </g>
                             </svg>
-                            <span style="font-size: 1.8rem; font-weight: 700; color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.2); letter-spacing: 1px;">Annesty</span>
+                            <span
+                                style="font-size: 1.8rem; font-weight: 700; color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.2); letter-spacing: 1px;">Annesty</span>
                         </div>
-                        <p><strong style="color: #fff;" data-i18n="annesty-role">Fullstack Developer</strong> <span data-i18n="annesty-date">(202X - Present)</span></p>
-                        <p data-i18n="annesty-desc">Developing scalable fullstack solutions for Annesty. Building robust backend architectures and highly interactive frontend interfaces. Integrating modern CI/CD practices and cloud deployments.</p>
+                        <p><strong style="color: #fff;" data-i18n="annesty-role">Fullstack Developer</strong> <span
+                                data-i18n="annesty-date">(202X - Present)</span></p>
+                        <p data-i18n="annesty-desc">Developing scalable fullstack solutions for Annesty. Building robust
+                            backend architectures and highly interactive frontend interfaces. Integrating modern CI/CD
+                            practices and cloud deployments.</p>
                         <div class="tech-tags">
                             <span>C++</span>
                             <span>Python</span>
@@ -555,12 +587,16 @@
             <section id="projects" class="glass-panel">
                 <h2 class="section-title" data-i18n="projects-title">Selected Projects</h2>
                 <div class="team-item">
-                    <h4 style="color: #fff; margin-bottom: 5px;" data-i18n="proj1-title">CI/CD for C++ Game Launcher</h4>
-                    <p data-i18n="proj1-desc">Built a complete CI/CD pipeline using GitLab CI for an automated build and distribution process of a C++ launcher, eliminating manual release overhead.</p>
+                    <h4 style="color: #fff; margin-bottom: 5px;" data-i18n="proj1-title">CI/CD for C++ Game Launcher
+                    </h4>
+                    <p data-i18n="proj1-desc">Built a complete CI/CD pipeline using GitLab CI for an automated build and
+                        distribution process of a C++ launcher, eliminating manual release overhead.</p>
                 </div>
                 <div class="team-item">
-                    <h4 style="color: #fff; margin-bottom: 5px;" data-i18n="proj2-title">Infrastructure as Code Setup</h4>
-                    <p data-i18n="proj2-desc">Provisioned server and database infrastructure using Terraform and Ansible, ensuring standardized environments from staging to production.</p>
+                    <h4 style="color: #fff; margin-bottom: 5px;" data-i18n="proj2-title">Infrastructure as Code Setup
+                    </h4>
+                    <p data-i18n="proj2-desc">Provisioned server and database infrastructure using Terraform and
+                        Ansible, ensuring standardized environments from staging to production.</p>
                 </div>
             </section>
 
@@ -582,10 +618,10 @@
                 "stack-obs": "Observability", "stack-basics": "Basics", "teams-title": "Experience",
                 "annesty-role": "Fullstack Developer", "annesty-date": "(202X - Present)",
                 "annesty-desc": "Developing scalable fullstack solutions for Annesty. Building robust backend architectures and highly interactive frontend interfaces. Integrating modern CI/CD practices and cloud deployments.",
-                "projects-title": "Selected Projects", 
+                "projects-title": "Selected Projects",
                 "proj1-title": "CI/CD for C++ Game Launcher",
                 "proj1-desc": "Built a complete CI/CD pipeline using GitLab CI for an automated build and distribution process of a C++ launcher, eliminating manual release overhead.",
-                "proj2-title": "Infrastructure as Code Setup", 
+                "proj2-title": "Infrastructure as Code Setup",
                 "proj2-desc": "Provisioned server and database infrastructure using Terraform and Ansible, ensuring standardized environments from staging to production.",
                 "footer-text": "© 2026 WaFF. All rights reserved. | Built with ☕ and "
             },
@@ -597,10 +633,10 @@
                 "stack-obs": "Мониторинг", "stack-basics": "База", "teams-title": "Опыт работы",
                 "annesty-role": "Fullstack-разработчик", "annesty-date": "(202X - Настоящее время)",
                 "annesty-desc": "Разработка масштабируемых fullstack-решений для проекта Annesty. Создание надежной backend-архитектуры и интерактивных frontend-интерфейсов. Интеграция современных CI/CD практик и облачных деплоев.",
-                "projects-title": "Избранные проекты", 
+                "projects-title": "Избранные проекты",
                 "proj1-title": "CI/CD для C++ Лаунчера",
                 "proj1-desc": "Настроил полный CI/CD пайплайн в GitLab CI для автоматической сборки и дистрибуции C++ лаунчера, полностью избавившись от ручных релизов.",
-                "proj2-title": "Внедрение Infrastructure as Code", 
+                "proj2-title": "Внедрение Infrastructure as Code",
                 "proj2-desc": "Развернул серверную инфраструктуру и базы данных с использованием Terraform и Ansible, стандартизировав окружения от staging до production.",
                 "footer-text": "© 2026 WaFF. Все права защищены. | Собрано с ☕ и "
             }
