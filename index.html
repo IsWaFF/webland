@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WaFF | DevOps Engineer</title>
+    <title>WaFF | Fullstack Developer</title>
 
     <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/93275675?v=4">
 
@@ -38,27 +38,13 @@
         }
 
         @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         @keyframes fadeInUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         header {
@@ -183,11 +169,11 @@
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1000px;
             margin: 100px auto 40px;
             padding: 0 20px;
-            display: grid;
-            grid-template-columns: 3fr 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 30px;
         }
 
@@ -195,6 +181,7 @@
             display: flex;
             flex-direction: column;
             gap: 30px;
+            width: 100%;
         }
 
         .glass-panel {
@@ -215,29 +202,10 @@
             z-index: 10;
         }
 
-        #about {
-            animation-delay: 0.05s;
-        }
-
-        #stack {
-            animation-delay: 0.1s;
-        }
-
-        #teams {
-            animation-delay: 0.15s;
-        }
-
-        #projects {
-            animation-delay: 0.2s;
-        }
-
-        .sidebar .glass-panel:nth-child(1) {
-            animation-delay: 0.25s;
-        }
-
-        .sidebar .glass-panel:nth-child(2) {
-            animation-delay: 0.3s;
-        }
+        #about { animation-delay: 0.05s; }
+        #stack { animation-delay: 0.1s; }
+        #teams { animation-delay: 0.15s; }
+        #projects { animation-delay: 0.2s; }
 
         h2.section-title {
             font-size: 1.5rem;
@@ -315,7 +283,6 @@
             color: var(--accent-green);
         }
 
-        /* --- Discord Tooltip Styles --- */
         .discord-wrapper {
             position: relative;
             display: inline-flex;
@@ -408,29 +375,14 @@
             margin-bottom: 25px;
         }
 
-        .team-logo-outlaw {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            display: inline-block;
-            background: #000;
-            padding: 5px 15px;
-            border-radius: 8px;
-            border: 1px solid #222;
-        }
-
-        .team-logo-outlaw .out {
-            color: #fff;
-        }
-
-        .team-logo-outlaw .law {
-            color: var(--accent-green);
-        }
-
         .team-item p {
             font-size: 0.9rem;
             color: var(--text-muted);
             margin-bottom: 10px;
+        }
+
+        .tech-tags {
+            margin-top: 10px;
         }
 
         .tech-tags span {
@@ -442,56 +394,6 @@
             font-size: 0.75rem;
             margin-right: 5px;
             margin-bottom: 5px;
-        }
-
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .crew-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .crew-member {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            border: 1px solid transparent;
-            transition: border-color 0.3s;
-        }
-
-        .crew-member:hover {
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .crew-member img {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            object-fit: cover;
-            filter: grayscale(100%);
-            transition: filter 0.3s;
-        }
-
-        .crew-member:hover img {
-            filter: grayscale(0%);
-        }
-
-        .crew-info h5 {
-            color: #fff;
-            font-size: 0.95rem;
-        }
-
-        .crew-info p {
-            color: var(--accent-green);
-            font-size: 0.75rem;
         }
 
         footer {
@@ -506,10 +408,6 @@
         }
 
         @media (max-width: 1024px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-
             .content-grid {
                 grid-template-columns: 1fr;
             }
@@ -567,10 +465,8 @@
                 <img src="https://avatars.githubusercontent.com/u/93275675?v=4" alt="WaFF Avatar" class="avatar">
                 <div class="hero-text">
                     <h1>WaFF</h1>
-                    <h3 data-i18n="hero-role">DevOps Engineer / Automation Specialist</h3>
-                    <p data-i18n="hero-desc">Started with Linux administration, then dove deep into CI/CD and IaC.
-                        Expert in cloud migration and container orchestration. I believe in DevOps efficiency and strive
-                        to build reliable, scalable systems with minimal technical debt.</p>
+                    <h3 data-i18n="hero-role">Fullstack Developer / DevOps</h3>
+                    <p data-i18n="hero-desc">Started with Linux administration, then dove deep into CI/CD and IaC. Now focused on scalable fullstack solutions, bridging the gap between robust backend architectures and seamless deployments.</p>
                     <div class="socials">
                         <a href="https://github.com/IsWaFF" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://t.me/asseryx" target="_blank"><i class="fab fa-telegram"></i></a>
@@ -608,48 +504,50 @@
                             </div>
                         </li>
                         <li>
-                            <i class="fas fa-chart-line"></i>
+                            <i class="fas fa-code"></i>
                             <div class="stack-info">
-                                <h4 data-i18n="stack-obs">Observability</h4>
-                                <p>Prometheus, Grafana, ELK</p>
+                                <h4>Development</h4>
+                                <p>TypeScript, React, Node.js, Python</p>
                             </div>
                         </li>
                         <li>
                             <i class="fab fa-linux"></i>
                             <div class="stack-info">
                                 <h4 data-i18n="stack-basics">Basics</h4>
-                                <p>Linux, Bash, Python, Networking</p>
+                                <p>Linux, Bash, Networking</p>
                             </div>
                         </li>
                     </ul>
                 </section>
 
                 <section id="teams" class="glass-panel">
-                    <h2 class="section-title" data-i18n="teams-title">Experience & Teams</h2>
+                    <h2 class="section-title" data-i18n="teams-title">Experience</h2>
 
                     <div class="team-item">
-                        <div class="team-logo-outlaw">
-                            <span class="out">out</span><span class="law">law</span>
+                        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                            <svg width="45" height="45" viewBox="-110 -110 220 220" style="filter: drop-shadow(0 0 8px rgba(220,20,20,0.5));">
+                                <g transform="rotate(45)">
+                                    <rect x="-14" y="-14" width="28" height="28" fill="#d11124" />
+                                    <rect x="-14" y="-44" width="28" height="28" fill="#ffffff" />
+                                    <rect x="-14" y="16" width="28" height="28" fill="#ffffff" />
+                                    <rect x="-44" y="-14" width="28" height="28" fill="#ffffff" />
+                                    <rect x="16" y="-14" width="28" height="28" fill="#ffffff" />
+                                    <rect x="-14" y="-74" width="28" height="28" fill="#d11124" />
+                                    <rect x="-14" y="46" width="28" height="28" fill="#d11124" />
+                                    <rect x="-74" y="-14" width="28" height="28" fill="#d11124" />
+                                    <rect x="46" y="-14" width="28" height="28" fill="#d11124" />
+                                </g>
+                            </svg>
+                            <span style="font-size: 1.8rem; font-weight: 700; color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.2); letter-spacing: 1px;">Annesty</span>
                         </div>
-                        <p><strong data-i18n="outlaw-role">DevOps Engineer</strong> <span data-i18n="outlaw-date">(202X
-                                - Present)</span></p>
-                        <p data-i18n="outlaw-desc">Introduced a robust Version Control System (VCS) workflow.
-                            Architected and built the entire core infrastructure from scratch, ensuring high
-                            availability and seamless deployment cycles.</p>
+                        <p><strong style="color: #fff;" data-i18n="annesty-role">Fullstack Developer</strong> <span data-i18n="annesty-date">(202X - Present)</span></p>
+                        <p data-i18n="annesty-desc">Developing scalable fullstack solutions for Annesty. Building robust backend architectures and highly interactive frontend interfaces. Integrating modern CI/CD practices and cloud deployments.</p>
                         <div class="tech-tags">
-                            <span>Terraform</span>
-                            <span>AWS</span>
-                            <span>GitLab CI</span>
-                        </div>
-                    </div>
-
-                    <div class="team-item">
-                        <h4 style="color: #fff; margin-bottom: 5px;" data-i18n="prev-team-title">Previous Team</h4>
-                        <p data-i18n="prev-team-desc">Migrated legacy monolithic systems to microservices architecture.
-                            Optimized existing CI/CD pipelines reducing deployment time by 40%.</p>
-                        <div class="tech-tags">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>TypeScript</span>
                             <span>Docker</span>
-                            <span>K8s</span>
+                            <span>CI/CD</span>
                         </div>
                     </div>
                 </section>
@@ -658,100 +556,16 @@
             <section id="projects" class="glass-panel">
                 <h2 class="section-title" data-i18n="projects-title">Selected Projects</h2>
                 <div class="team-item">
-                    <h4 style="color: #fff; margin-bottom: 5px;" data-i18n="proj1-title">Scalable K8s Cluster Automation
-                    </h4>
-                    <p data-i18n="proj1-desc">Designed a fully automated Kubernetes cluster provisioning system using
-                        Terraform and Ansible. Implemented GitOps approach using ArgoCD for declarative deployments.</p>
+                    <h4 style="color: #fff; margin-bottom: 5px;" data-i18n="proj1-title">CI/CD for C++ Game Launcher</h4>
+                    <p data-i18n="proj1-desc">Built a complete CI/CD pipeline using GitLab CI for an automated build and distribution process of a C++ launcher, eliminating manual release overhead.</p>
                 </div>
                 <div class="team-item">
-                    <h4 style="color: #fff; margin-bottom: 5px;" data-i18n="proj2-title">Zero-Downtime Migration</h4>
-                    <p data-i18n="proj2-desc">Successfully migrated production databases with zero downtime during peak
-                        hours, utilizing logical replication and careful traffic routing.</p>
+                    <h4 style="color: #fff; margin-bottom: 5px;" data-i18n="proj2-title">Infrastructure as Code Setup</h4>
+                    <p data-i18n="proj2-desc">Provisioned server and database infrastructure using Terraform and Ansible, ensuring standardized environments from staging to production.</p>
                 </div>
             </section>
 
         </main>
-
-        <aside class="sidebar">
-            <section class="glass-panel">
-                <h2 class="section-title" data-i18n="crew-title">The Crew</h2>
-                <div class="crew-list">
-                    <div class="crew-member">
-                        <img src="https://cdn.discordapp.com/avatars/1028744955402916073/3cb1cc8252405579a344a248ab284c8b.webp?size=128"
-                            alt="Crew">
-                        <div class="crew-info">
-                            <h5>Andriko.</h5>
-                            <p data-i18n="crew-andriko">Nice guy, not a Jew / electrician</p>
-                        </div>
-                    </div>
-                    <div class="crew-member">
-                        <img src="https://discordapp.com/assets/0e291f67c9274a1abdddeb3fd919cbaa.png" alt="Crew">
-                        <div class="crew-info">
-                            <h5>/ (slash)</h5>
-                            <p data-i18n="crew-slash">Backend / С ++ / Lead Dev</p>
-                        </div>
-                    </div>
-                    <div class="crew-member">
-                        <img src="https://cdn.discordapp.com/avatars/1144396205066027099/b79a29987915d32e7217bdc2d61814e6.webp?size=128"
-                            alt="Crew">
-                        <div class="crew-info">
-                            <h5>bftv</h5>
-                            <p>SWAG?</p>
-                        </div>
-                    </div>
-                    <div class="crew-member">
-                        <img src="https://cdn.discordapp.com/avatars/1330062857332850709/8a1aab2cea92e24a9d255a1c8da2dfac.webp?size=128"
-                            alt="Crew">
-                        <div class="crew-info">
-                            <h5>Limit</h5>
-                            <p data-i18n="crew-limit">HVH trash</p>
-                        </div>
-                    </div>
-                    <div class="crew-member">
-                        <img src="https://cdn.discordapp.com/avatars/1202202992011644938/c9d64c58ed0bf7a41f041594cc3d9d66.webp?size=128"
-                            alt="Crew">
-                        <div class="crew-info">
-                            <h5>chertvahvh</h5>
-                            <p data-i18n="crew-chert">Cargo 200</p>
-                        </div>
-                    </div>
-                    <div class="crew-member">
-                        <img src="https://cdn.discordapp.com/avatars/1432860924598812792/daa20156cf7959ce90bdf73b7ad9d855.webp?size=128"
-                            alt="Crew">
-                        <div class="crew-info">
-                            <h5>Onico</h5>
-                            <p data-i18n="crew-onico">umbrella god</p>
-                        </div>
-                    </div>
-                    <div class="crew-member">
-                        <img src="https://cdn.discordapp.com/avatars/1363184866749055206/da5e31aacdee1ba12a2779a892bb8d1e.webp?size=128"
-                            alt="Crew">
-                        <div class="crew-info">
-                            <h5>allahbabax</h5>
-                            <p data-i18n="crew-allah">skeet great cheat</p>
-                        </div>
-                    </div>
-                    <div class="crew-member">
-                        <img src="https://cdn.discordapp.com/avatars/1163861840762257528/53066b1c9ccdbf9dbfd0f34cf446fa7d.webp?size=128"
-                            alt="Crew">
-                        <div class="crew-info">
-                            <h5>пutausь</h5>
-                            <p data-i18n="crew-putaus">Lc king</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="glass-panel" style="text-align: center;">
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;" data-i18n="contact-desc">
-                    Need a dedicated DevOps?</p>
-                <a href="mailto:your.email@example.com"
-                    style="display: inline-block; padding: 10px 20px; background: var(--accent-green); color: #000; text-decoration: none; font-weight: bold; border-radius: 6px; transition: opacity 0.3s;"
-                    data-i18n="contact-btn">
-                    Contact Me
-                </a>
-            </section>
-        </aside>
     </div>
 
     <footer>
@@ -763,37 +577,33 @@
         const translations = {
             en: {
                 "nav-about": "About", "nav-stack": "Stack", "nav-projects": "Projects",
-                "hero-role": "DevOps Engineer / Automation Specialist",
-                "hero-desc": "Started with Linux administration, then dove deep into CI/CD and IaC. Expert in cloud migration and container orchestration. I believe in DevOps efficiency and strive to build reliable, scalable systems with minimal technical debt.",
+                "hero-role": "Fullstack Developer / DevOps",
+                "hero-desc": "Started with Linux administration, then dove deep into CI/CD and IaC. Now focused on scalable fullstack solutions, bridging the gap between robust backend architectures and seamless deployments.",
                 "stack-title": "Core Stack", "stack-cloud": "Cloud & IaC", "stack-containers": "Containers",
-                "stack-obs": "Observability", "stack-basics": "Basics", "teams-title": "Experience & Teams",
-                "outlaw-role": "DevOps Engineer", "outlaw-date": "(202X - Present)",
-                "outlaw-desc": "Introduced a robust Version Control System (VCS) workflow. Architected and built the entire core infrastructure from scratch, ensuring high availability and seamless deployment cycles.",
-                "prev-team-title": "Previous Team", "prev-team-desc": "Migrated legacy monolithic systems to microservices architecture. Optimized existing CI/CD pipelines reducing deployment time by 40%.",
-                "projects-title": "Selected Projects", "proj1-title": "Scalable K8s Cluster Automation",
-                "proj1-desc": "Designed a fully automated Kubernetes cluster provisioning system using Terraform and Ansible. Implemented GitOps approach using ArgoCD for declarative deployments.",
-                "proj2-title": "Zero-Downtime Migration", "proj2-desc": "Successfully migrated production databases with zero downtime during peak hours, utilizing logical replication and careful traffic routing.",
-                "crew-title": "The Crew", "crew-andriko": "Nice guy, not a Jew / electrician", "crew-slash": "Backend / C++ / Lead Dev",
-                "crew-limit": "HVH trash", "crew-chert": "Cargo 200", "crew-onico": "umbrella god",
-                "crew-allah": "skeet great cheat", "crew-putaus": "Lc king", "contact-desc": "Need a dedicated DevOps?",
-                "contact-btn": "Contact Me", "footer-text": "© 2026 WaFF. All rights reserved. | Built with ☕ and "
+                "stack-obs": "Observability", "stack-basics": "Basics", "teams-title": "Experience",
+                "annesty-role": "Fullstack Developer", "annesty-date": "(202X - Present)",
+                "annesty-desc": "Developing scalable fullstack solutions for Annesty. Building robust backend architectures and highly interactive frontend interfaces. Integrating modern CI/CD practices and cloud deployments.",
+                "projects-title": "Selected Projects", 
+                "proj1-title": "CI/CD for C++ Game Launcher",
+                "proj1-desc": "Built a complete CI/CD pipeline using GitLab CI for an automated build and distribution process of a C++ launcher, eliminating manual release overhead.",
+                "proj2-title": "Infrastructure as Code Setup", 
+                "proj2-desc": "Provisioned server and database infrastructure using Terraform and Ansible, ensuring standardized environments from staging to production.",
+                "footer-text": "© 2026 WaFF. All rights reserved. | Built with ☕ and "
             },
             ru: {
                 "nav-about": "Обо мне", "nav-stack": "Стек", "nav-projects": "Проекты",
-                "hero-role": "DevOps-инженер / Специалист по автоматизации",
-                "hero-desc": "Начинал с администрирования Linux, затем плотно ушел в CI/CD и IaC. Эксперт по миграции в облако и оркестрации контейнеров. Топлю за эффективность DevOps и стремлюсь строить надежные, масштабируемые системы без лишнего техдолга.",
+                "hero-role": "Fullstack-разработчик / DevOps",
+                "hero-desc": "Начинал с администрирования Linux, затем ушел в CI/CD и IaC. Сейчас сфокусирован на масштабируемых fullstack-решениях, объединяя надежную backend-архитектуру и автоматизированные деплои.",
                 "stack-title": "Основной стек", "stack-cloud": "Облака и IaC", "stack-containers": "Контейнеры",
-                "stack-obs": "Мониторинг", "stack-basics": "База", "teams-title": "Опыт и Команды",
-                "outlaw-role": "DevOps-инженер", "outlaw-date": "(202X - Настоящее время)",
-                "outlaw-desc": "Внедрил надежный воркфлоу работы с VCS. Спроектировал и развернул всю базовую инфраструктуру с нуля, обеспечив высокую доступность и бесперебойные циклы деплоя.",
-                "prev-team-title": "Прошлый проект", "prev-team-desc": "Перенес устаревшие монолитные системы на микросервисную архитектуру. Оптимизировал CI/CD пайплайны, сократив время развертывания на 40%.",
-                "projects-title": "Избранные проекты", "proj1-title": "Автоматизация масштабирования K8s",
-                "proj1-desc": "Разработал полностью автоматизированную систему развертывания Kubernetes-кластеров через Terraform и Ansible. Внедрил подход GitOps с помощью ArgoCD для декларативных деплоев.",
-                "proj2-title": "Миграция без даунтайма (Zero-Downtime)", "proj2-desc": "Успешно мигрировал продакшен-базы данных без простоев в часы пик, используя логическую репликацию и аккуратную маршрутизацию трафика.",
-                "crew-title": "Кентики", "crew-andriko": "Хороший парень, не еврей / электрик", "crew-slash": "Backend / C++ / Lead Dev",
-                "crew-limit": "HVH мусор", "crew-chert": "Груз 200", "crew-onico": "бог амбреллы",
-                "crew-allah": "скит лучший чит", "crew-putaus": "король Lc", "contact-desc": "Нужен толковый DevOps?",
-                "contact-btn": "Связаться", "footer-text": "© 2026 WaFF. Все права защищены. | Собрано с ☕ и "
+                "stack-obs": "Мониторинг", "stack-basics": "База", "teams-title": "Опыт работы",
+                "annesty-role": "Fullstack-разработчик", "annesty-date": "(202X - Настоящее время)",
+                "annesty-desc": "Разработка масштабируемых fullstack-решений для проекта Annesty. Создание надежной backend-архитектуры и интерактивных frontend-интерфейсов. Интеграция современных CI/CD практик и облачных деплоев.",
+                "projects-title": "Избранные проекты", 
+                "proj1-title": "CI/CD для C++ Лаунчера",
+                "proj1-desc": "Настроил полный CI/CD пайплайн в GitLab CI для автоматической сборки и дистрибуции C++ лаунчера, полностью избавившись от ручных релизов.",
+                "proj2-title": "Внедрение Infrastructure as Code", 
+                "proj2-desc": "Развернул серверную инфраструктуру и базы данных с использованием Terraform и Ansible, стандартизировав окружения от staging до production.",
+                "footer-text": "© 2026 WaFF. Все права защищены. | Собрано с ☕ и "
             }
         };
 
@@ -840,7 +650,6 @@
                         const rect = panel.getBoundingClientRect();
                         const x = e.clientX - rect.left;
                         const y = e.clientY - rect.top;
-
 
                         const centerX = rect.width / 2;
                         const centerY = rect.height / 2;
