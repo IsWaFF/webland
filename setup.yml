@@ -9,16 +9,29 @@
     container_name: "webland-app"
 
   tasks:
-    - name: Установить базу (Git, Docker, Python)
-      apt:
-        name:
-          - git
-          - curl
-          - docker-ce
-          - docker-compose-plugin
-          - python3-docker
-        state: present
-        update_cache: yes
+    - name: Установить базу (Git, Docker, Python) с фоллбеком
+      block:
+        - name: Попытка установить официальный docker-ce
+          apt:
+            name:
+              - git
+              - curl
+              - docker-ce
+              - docker-compose-plugin
+              - python3-docker
+            state: present
+            update_cache: yes
+      rescue:
+        - name: Если docker-ce не найден, ставим docker.io
+          apt:
+            name:
+              - git
+              - curl
+              - docker.io
+              - docker-compose
+              - python3-docker
+            state: present
+            update_cache: yes
 
     - name: Создать пользователя для раннера
       user:
