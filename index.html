@@ -533,8 +533,8 @@
                     <h3 data-i18n="hero-role">Aspiring DevOps Engineer</h3>
                     <p data-i18n="hero-desc">First-year student at BNTU, learning DevOps in public since November 2025.
                         Linux is my daily driver; in my homelab I work with Docker, CI/CD, Ansible, monitoring and
-                        Kubernetes basics. Currently sharpening Linux troubleshooting on SadServers and looking for a
-                        DevOps internship.</p>
+                        Kubernetes. Currently going deep on Kubernetes, solving troubleshooting scenarios on SadServers
+                        and looking for a DevOps internship.</p>
                     <div class="socials">
                         <a href="https://github.com/IsWaFF" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://t.me/swawson" target="_blank"><i class="fab fa-telegram"></i></a>
@@ -568,7 +568,7 @@
                             <i class="fab fa-docker"></i>
                             <div class="stack-info">
                                 <h4 data-i18n="stack-containers">Containers</h4>
-                                <p>Docker, Docker Compose, Kubernetes basics (minikube)</p>
+                                <p>Docker, Docker Compose, Kubernetes (kind, k3d, minikube)</p>
                             </div>
                         </li>
                         <li>
@@ -626,8 +626,9 @@
                                 <span class="item-meta" data-i18n="log-date">November 2025 – present</span>
                             </div>
                         </div>
-                        <p data-i18n="log-desc">Public weekly log with 120+ commits: Linux → networking → Docker → CI/CD →
-                            monitoring → Ansible → Kubernetes. Now: Bash and Linux troubleshooting on SadServers.</p>
+                        <p data-i18n="log-desc">Public weekly log with 150+ commits: Linux → networking → Docker → CI/CD →
+                            monitoring → Ansible → Kubernetes. Now: Kubernetes in depth (StatefulSets, probes, scheduling,
+                            debugging) and troubleshooting scenarios on SadServers.</p>
                         <div class="tech-tags">
                             <span>Linux</span>
                             <span>Networking</span>
@@ -642,6 +643,21 @@
 
             <section id="projects" class="glass-panel">
                 <h2 class="section-title" data-i18n="projects-title">Projects</h2>
+                <div class="team-item">
+                    <h4><a href="https://github.com/IsWaFF/shorty" target="_blank" rel="noopener"><span
+                                data-i18n="proj5-title">shorty — URL shortener on Kubernetes</span> <i
+                                class="fab fa-github"></i></a></h4>
+                    <p data-i18n="proj5-desc">Infrastructure for a Flask + PostgreSQL URL shortener: Dockerfile and
+                        Kubernetes manifests for a kind cluster — namespace, ConfigMap and Secret, PostgreSQL as a
+                        StatefulSet with a PersistentVolumeClaim, readiness/liveness probes, resource requests and
+                        limits.</p>
+                    <div class="tech-tags">
+                        <span>Kubernetes</span>
+                        <span>Docker</span>
+                        <span>PostgreSQL</span>
+                        <span>kind</span>
+                    </div>
+                </div>
                 <div class="team-item">
                     <h4><a href="https://github.com/IsWaFF/webland" target="_blank" rel="noopener"><span
                                 data-i18n="proj1-title">This website</span> <i class="fab fa-github"></i></a></h4>
@@ -709,7 +725,7 @@
             en: {
                 "nav-about": "About", "nav-stack": "Stack", "nav-projects": "Projects",
                 "hero-role": "Aspiring DevOps Engineer",
-                "hero-desc": "First-year student at BNTU, learning DevOps in public since November 2025. Linux is my daily driver; in my homelab I work with Docker, CI/CD, Ansible, monitoring and Kubernetes basics. Currently sharpening Linux troubleshooting on SadServers and looking for a DevOps internship.",
+                "hero-desc": "First-year student at BNTU, learning DevOps in public since November 2025. Linux is my daily driver; in my homelab I work with Docker, CI/CD, Ansible, monitoring and Kubernetes. Currently going deep on Kubernetes, solving troubleshooting scenarios on SadServers and looking for a DevOps internship.",
                 "stack-title": "Hands-on Stack", "stack-basics": "Basics", "stack-net": "Networking",
                 "stack-containers": "Containers", "stack-auto": "Automation", "stack-obs": "Monitoring",
                 "stack-dev": "Development",
@@ -719,7 +735,9 @@
                 "edu-desc": "First year. Studying alongside my DevOps self-education.",
                 "log-title": "DevOps learning log",
                 "log-date": "November 2025 – present",
-                "log-desc": "Public weekly log with 120+ commits: Linux → networking → Docker → CI/CD → monitoring → Ansible → Kubernetes. Now: Bash and Linux troubleshooting on SadServers.",
+                "log-desc": "Public weekly log with 150+ commits: Linux → networking → Docker → CI/CD → monitoring → Ansible → Kubernetes. Now: Kubernetes in depth (StatefulSets, probes, scheduling, debugging) and troubleshooting scenarios on SadServers.",
+                "proj5-title": "shorty — URL shortener on Kubernetes",
+                "proj5-desc": "Infrastructure for a Flask + PostgreSQL URL shortener: Dockerfile and Kubernetes manifests for a kind cluster — namespace, ConfigMap and Secret, PostgreSQL as a StatefulSet with a PersistentVolumeClaim, readiness/liveness probes, resource requests and limits.",
                 "projects-title": "Projects",
                 "proj1-title": "This website",
                 "proj1-desc": "Static site on GitHub Pages behind Cloudflare. The repo also contains a Dockerfile (nginx:alpine), Ansible playbooks that prepare a Linux server (Docker, a GitHub Actions runner user) and apply updates with a conditional reboot, and a workflow that deploys the container through a self-hosted runner.",
@@ -734,7 +752,7 @@
             ru: {
                 "nav-about": "Обо мне", "nav-stack": "Стек", "nav-projects": "Проекты",
                 "hero-role": "Начинающий DevOps-инженер",
-                "hero-desc": "Студент 1 курса БНТУ, изучаю DevOps публично с ноября 2025. Linux — моя основная система; в домашней лаборатории работаю с Docker, CI/CD, Ansible, мониторингом и основами Kubernetes. Сейчас прокачиваю траблшутинг Linux на SadServers и ищу стажировку в DevOps.",
+                "hero-desc": "Студент 1 курса БНТУ, изучаю DevOps публично с ноября 2025. Linux — моя основная система; в домашней лаборатории работаю с Docker, CI/CD, Ansible, мониторингом и Kubernetes. Сейчас углубляюсь в Kubernetes, решаю сценарии траблшутинга на SadServers и ищу стажировку в DevOps.",
                 "stack-title": "С чем работал руками", "stack-basics": "База", "stack-net": "Сети",
                 "stack-containers": "Контейнеры", "stack-auto": "Автоматизация", "stack-obs": "Мониторинг",
                 "stack-dev": "Разработка",
@@ -744,7 +762,9 @@
                 "edu-desc": "Первый курс. Учусь параллельно с самостоятельным изучением DevOps.",
                 "log-title": "Дневник изучения DevOps",
                 "log-date": "Ноябрь 2025 – сейчас",
-                "log-desc": "Публичный еженедельный лог, 120+ коммитов: Linux → сети → Docker → CI/CD → мониторинг → Ansible → Kubernetes. Сейчас: Bash и траблшутинг Linux на SadServers.",
+                "log-desc": "Публичный еженедельный лог, 150+ коммитов: Linux → сети → Docker → CI/CD → мониторинг → Ansible → Kubernetes. Сейчас: Kubernetes вглубь (StatefulSet, пробы, планирование подов, отладка) и сценарии траблшутинга на SadServers.",
+                "proj5-title": "shorty — сокращатель ссылок в Kubernetes",
+                "proj5-desc": "Инфраструктура для сокращателя ссылок на Flask + PostgreSQL: Dockerfile и манифесты Kubernetes для кластера kind — namespace, ConfigMap и Secret, PostgreSQL в StatefulSet с PersistentVolumeClaim, readiness/liveness пробы, requests и limits по ресурсам.",
                 "projects-title": "Проекты",
                 "proj1-title": "Этот сайт",
                 "proj1-desc": "Статический сайт на GitHub Pages за Cloudflare. В репозитории также есть Dockerfile (nginx:alpine), Ansible-плейбуки для подготовки Linux-сервера (Docker, пользователь для GitHub Actions runner) и обновления с перезагрузкой при необходимости, и workflow для деплоя контейнера через self-hosted runner.",
